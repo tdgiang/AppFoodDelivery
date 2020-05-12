@@ -8,10 +8,6 @@ class Button extends Component {
       style,
       opacity,
       color,
-      startColor,
-      endColor,
-      end,
-      start,
       locations,
       shadow,
       children,
@@ -41,11 +37,6 @@ class Button extends Component {
 }
 
 Button.defaultProps = {
-  startColor: colors.primary,
-  endColor: colors.secondary,
-  start: { x: 0, y: 0 },
-  end: { x: 1, y: 1 },
-  locations: [0.1, 0.9],
   opacity: 0.8,
   color: colors.white
 };
