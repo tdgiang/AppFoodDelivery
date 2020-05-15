@@ -68,22 +68,49 @@ const styles=StyleSheet.create({
         borderRadius:25,
         width:40,
         height:40,
-        marginLeft:20
+        marginHorizontal:15
          
     },
     imgFoodPopular:{
         width:width/2,
-        height:height/3+20,
+        height:height/3+30,
         borderRadius:sizes.small*2,
         marginVertical:sizes.small
     },
     itemFoodPopular:{
         width:width/2,
+        marginRight:20
     },
     boxFree:{
+        paddingHorizontal:5,
         borderRadius:sizes.small,
         backgroundColor:colors.orange,
         paddingHorizontal:2
+    },
+  
+    imgFoodNear:{
+        width:100,
+        height:100,
+        borderRadius:sizes.small,
+        marginRight:10
+    },
+    btnIcon:{
+        marginLeft:10
+    },
+    scrollStyle:{
+        flex:1,
+        paddingLeft:15,
+        backgroundColor:'white'
+    },
+    imgCollectionHome:{
+        width:width/2,
+        height:120,
+        borderRadius:sizes.small*2
+    },
+    boxShowAll:{
+        flexDirection:'row',
+        justifyContent:'center' ,
+        alignItems:'center'
     }
 
 
