@@ -1,53 +1,61 @@
 import React, { Component } from 'react';
-import {  View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback, Button, Keyboard    } from 'react-native';
- 
-
+import { View,TextInput,ScrollView,Image  } from 'react-native';
+import {Block,Button,Text} from '../component/index';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {colors} from '../constants/theme';
+const  img=require('../constants/images/login1.jpg');
+import styles from '../style/styles';
 
 export default class Home extends Component {
      
     render() {
+      const  {txtInputHome,btnSearch,imgFoodPopular,itemFoodPopular,boxFree}=styles;
         return (
-            <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <Text style={styles.header}>Header</Text>
-          <TextInput placeholder="Username" style={styles.textInput} />
-          <View style={styles.btnContainer}>
-            <Button title="Submit" onPress={() => null} />
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+             <ScrollView style={{paddingHorizontal:10,flex:1}} >
+                <Block row   center style={{height:55}}    >
+                  <TextInput
+                    placeholder={'Search'}
+                    style={txtInputHome}
+                  />
+                  <Button style={btnSearch} >
+                    <Icon
+                      name={'search'}
+                      size={20}
+                      color={'white'}
+                      style={{marginLeft:10}}
+                    />
+                  </Button>
+                </Block>
+                <Block  flex={1}       >
+                    <Text h1 >Nổi bật </Text>
+                    <View   style={itemFoodPopular} >
+                        <Image
+                          source={img}
+                          style={imgFoodPopular}
+                          resizeMode={'cover'}
+                        />
+                        <Text h3 >Name foood</Text>
+                        <Text gray >adress</Text>
+                        <Block  row center  space={'between'} >
+                          <Icon
+                            name={"star"}
+                            color={colors.orange}
+                          />
+
+                          <Text  >4.6</Text>
+                          <Text gray >(233 ratings)</Text>
+                          <View   style={boxFree}  >
+                              <Text white >Free delivery</Text>
+                          </View>
+                        </Block>
+                    </View>
+
+                </Block>
+
+             </ScrollView>
             
         );
     }
 }
-const styles = StyleSheet.create({
-    container: {
-      flex: 1
-    },
-    inner: {
-      padding: 24,
-      flex: 1,
-      justifyContent: "space-around",
-      backgroundColor:'red'
-    },
-    header: {
-      fontSize: 36,
-      marginBottom: 48
-    },
-    textInput: {
-      height: 40,
-      borderColor: "#000000",
-      borderBottomWidth: 1,
-      marginBottom: 36
-    },
-    btnContainer: {
-      backgroundColor: "white",
-      marginTop: 12
-    }
-  });
+ 
   

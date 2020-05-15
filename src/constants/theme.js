@@ -6,13 +6,16 @@ const colors = {
   black: "#323643",
   white: "#FFFFFF",
   gray: "#9DA3B4",
-  gray2: "#C5CCD6",
+  gray3: "#C5CCD6",
+  gray2:"#cccccc",
+  gray1:"#bfbfbf",
   orange:"#e68a00",
   lightBlue:"#1a8cff"
 };
 
 const sizes = {
   // global sizes
+  small:5,
   base: 16,
   font: 14,
   radius: 6,

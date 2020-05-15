@@ -14,7 +14,8 @@ import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import PlaceDetail from '../screens/PlaceDetail';
 import VerifyPhone from '../screens/VerifyPhone';
- 
+import VerifyOTP from '../screens/VerifyOTP';
+
  
 const Stack = createStackNavigator();
 
@@ -35,7 +36,7 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="VerifyPhone">
+                <Stack.Navigator initialRouteName="Home">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}
@@ -85,6 +86,11 @@ export default class index extends Component {
                      <Stack.Screen 
                         name="VerifyPhone" 
                         component={VerifyPhone} 
+                        options={this._settingOption()}
+                    />
+                     <Stack.Screen 
+                        name="VerifyOTP" 
+                        component={VerifyOTP} 
                         options={this._settingOption()}
                     />
                     <Stack.Screen 
