@@ -7,6 +7,7 @@ import { colors, sizes, fonts } from "../constants/theme";
 export default class Typography extends Component {
   render() {
     const {
+      big,
       h1,
       h2,
       h3,
@@ -45,6 +46,7 @@ export default class Typography extends Component {
 
     const textStyles = [
       styles.text,
+      big && styles.big,
       h1 && styles.h1,
       h2 && styles.h2,
       h3 && styles.h3,
@@ -128,5 +130,6 @@ const styles = StyleSheet.create({
   title: fonts.title,
   body: fonts.body,
   caption: fonts.caption,
-  small: fonts.small
+  small: fonts.small,
+  big:fonts.big
 });

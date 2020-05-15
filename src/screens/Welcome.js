@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,Image,StyleSheet,ImageBackground } from 'react-native';
+import { View,Image,StyleSheet,ImageBackground,StatusBar } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,10 +10,14 @@ const bgWelcome=require('../constants/images/bgWelcome1.jpg')
 
 
 export default class Welcome extends Component {
-     
+    
+    componentDidMount(){
+        StatusBar.setHidden(false);
+    }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
         return (
+                 
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>
                      <LinearGradient 
                         start={{x: 0, y: 0}} end={{x: 0, y: 1}}
@@ -32,10 +36,10 @@ export default class Welcome extends Component {
                     </Block>
                    
                     <Block  flex={1} middle  >
-                        <Button  style={btn}  color={'#e68a00'}   >
+                        <Button  style={btn}  color={'orange'}   >
                             <Text h3 white >Login</Text>      
                         </Button>
-                        <Button style={btn}   color={'#1a8cff'} >
+                        <Button style={btn}   color={'lightBlue'} >
                             <Icon 
                                 name={'facebook'}
                                 size={25}

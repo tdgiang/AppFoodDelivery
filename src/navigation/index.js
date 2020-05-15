@@ -35,7 +35,7 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Welcome">
+                <Stack.Navigator initialRouteName="VerifyPhone">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}

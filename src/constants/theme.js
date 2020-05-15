@@ -6,7 +6,9 @@ const colors = {
   black: "#323643",
   white: "#FFFFFF",
   gray: "#9DA3B4",
-  gray2: "#C5CCD6"
+  gray2: "#C5CCD6",
+  orange:"#e68a00",
+  lightBlue:"#1a8cff"
 };
 
 const sizes = {
@@ -17,6 +19,7 @@ const sizes = {
   padding: 25,
 
   // font sizes
+  big:34,
   h1: 26,
   h2: 20,
   h3: 18,
@@ -27,6 +30,9 @@ const sizes = {
 };
 
 const fonts = {
+  big:{
+    fontSize:sizes.big
+  },
   h1: {
     fontSize: sizes.h1
   },

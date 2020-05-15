@@ -65,5 +65,7 @@ const styles = StyleSheet.create({
   gray: { backgroundColor: colors.gray },
   gray2: { backgroundColor: colors.gray2 },
   gray3: { backgroundColor: colors.gray3 },
-  gray4: { backgroundColor: colors.gray4 }
+  gray4: { backgroundColor: colors.gray4 },
+  orange: { backgroundColor: colors.orange },
+  lightBlue: { backgroundColor: colors.lightBlue }
 });
