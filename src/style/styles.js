@@ -18,14 +18,15 @@ const styles=StyleSheet.create({
         paddingHorizontal:20,
         marginVertical:5,
         borderRadius:20,
-        paddingVertical:10
+        paddingVertical:10,
 
-         
+        
     },
     btn:{
         borderRadius:20,
-        justifyContent:'center',
+        justifyContent:'space-around',
         alignItems:'center',
+        flexDirection:'row',
         paddingVertical:5
 
     },
@@ -85,7 +86,7 @@ const styles=StyleSheet.create({
         paddingHorizontal:5,
         borderRadius:sizes.small,
         backgroundColor:colors.orange,
-        paddingHorizontal:2
+         
     },
   
     imgFoodNear:{
@@ -111,6 +112,37 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center' ,
         alignItems:'center'
+    },
+    boxTotal:{
+        borderBottomWidth:1,
+        borderBottomWidth:1,
+        borderBottomColor:colors.gray4,
+        marginBottom:10
+    },
+    row:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    headerOrder:{
+         paddingHorizontal:20,
+        backgroundColor:colors.gray4,
+        paddingVertical:10
+    },
+    containerOrder:{
+        elevation:2,
+        backgroundColor:'white',
+        marginHorizontal:10,
+        marginVertical:10,
+        borderRadius:sizes.small
+    },
+    itemOrder:{
+        paddingVertical:10,
+        marginHorizontal:20,
+        marginVertical:5,
+        borderBottomWidth:1,
+        borderBottomColor:colors.gray4
+
     }
 
 
