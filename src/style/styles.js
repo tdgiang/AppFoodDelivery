@@ -30,6 +30,7 @@ const styles=StyleSheet.create({
         paddingVertical:5
 
     },
+    
     circleBox:{
        
       
@@ -207,8 +208,46 @@ const styles=StyleSheet.create({
         bottom:0,
         right:0,
         backgroundColor:colors.gray4,
-        position:"absolute",
+        position:"absolute",  
+    },
+    itemCollection:{
+        width:(width/2)-30,
+        height:height/3,
+        marginTop:10,
+        borderRadius:sizes.small*2,
+        overflow:'hidden'
+
+    },
+    boxSlide:{
+        height:height/3,
+        width:width
+
+    },
+    bodyFoodDetail:{
+        backgroundColor:'white',
+         marginTop:-10,
+        borderTopRightRadius:15,
+        borderTopLeftRadius:15,
+        paddingTop:10
         
+    },
+    boxSlideDetail:{
+        height:height/2,
+        width:width
+    },
+    headerFoodDetail:{
+        height:50,
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingHorizontal:20
+
+    },
+    imgFoodDetail:{
+        width:120,
+        height:120,
+        marginRight:10,
+        borderRadius:sizes.small
     }
 
 

@@ -56,7 +56,7 @@ export default class Login extends Component {
                                         placeholder={'Password'}
                                         
                                     />
-                                    <Button style={btn}  color={'orange'}  >
+                                    <Button onPress={()=>this.props.navigation.navigate("Home")} style={btn}  color={'orange'}  >
                                         <Text title white >Login</Text>
                                     </Button>
                                     <TouchableOpacity>

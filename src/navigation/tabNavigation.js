@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+ 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import Login from '../screens/Login';
+ 
 import Home from '../screens/Home';
 import Order from '../screens/Order';
 import Favorite from '../screens/Favorite';
 import Profile from '../screens/Profile';
-
+ 
 const orange="#e68a00";
 
 
@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Home"
         tabBarOptions={{
         activeTintColor: orange,
         }}
@@ -77,7 +77,7 @@ export default class tabNavigation extends Component {
     state = {  }
     render() {
         return (
-            <NavigationContainer>
+            <NavigationContainer  independent={true} >
                 <MyTabs />
           </NavigationContainer>
         );

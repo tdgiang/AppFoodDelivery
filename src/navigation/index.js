@@ -8,14 +8,14 @@ import Welcome from '../screens/Welcome';
 import Favorite from '../screens/Favorite';
 import FoodDetail from '../screens/FoodDetail';
 import ForgotPassword from '../screens/ForgotPassword';
-import Home from '../screens/Home';
+//import Home from '../screens/Home';
 import ListFoods from '../screens/ListFoods';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import PlaceDetail from '../screens/PlaceDetail';
+import CollectionDetail from '../screens/CollectionDetail';
 import VerifyPhone from '../screens/VerifyPhone';
 import VerifyOTP from '../screens/VerifyOTP';
-
+import tabNavigation from './tabNavigation';
  
 const Stack = createStackNavigator();
 
@@ -36,7 +36,7 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
+                <Stack.Navigator initialRouteName="FoodDetail">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}
@@ -65,7 +65,7 @@ export default class index extends Component {
                     />
                     <Stack.Screen 
                         name="Home" 
-                        component={Home} 
+                        component={tabNavigation} 
                         options={this._settingOption()}
                     />
                     <Stack.Screen 
@@ -79,8 +79,8 @@ export default class index extends Component {
                         options={this._settingOption()}
                     />
                      <Stack.Screen 
-                        name="PlaceDetail" 
-                        component={PlaceDetail} 
+                        name="CollectionDetail" 
+                        component={CollectionDetail} 
                         options={this._settingOption()}
                     />
                      <Stack.Screen 

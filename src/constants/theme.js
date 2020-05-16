@@ -12,7 +12,8 @@ const colors = {
   gray4:"#e6e6e6",
   orange:"#e68a00",
   lightBlue:"#1a8cff",
-  lightBlue1:"#008ae6"
+  lightBlue1:"#008ae6",
+  yellow:"#e6e600",
 };
 
 const sizes = {

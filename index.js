@@ -9,4 +9,4 @@ import  index from './src/navigation/index';
 
 import tabNavigation from './src/navigation/tabNavigation';
 
-AppRegistry.registerComponent(appName, () => tabNavigation);
+AppRegistry.registerComponent(appName, () => index);
