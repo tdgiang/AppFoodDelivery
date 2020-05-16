@@ -73,13 +73,13 @@ const styles=StyleSheet.create({
          
     },
     imgFoodPopular:{
-        width:width/2,
+        width:width/2+20,
         height:height/3+30,
         borderRadius:sizes.small*2,
         marginVertical:sizes.small
     },
     itemFoodPopular:{
-        width:width/2,
+        width:width/2+20 ,
         marginRight:20
     },
     boxFree:{
@@ -121,6 +121,10 @@ const styles=StyleSheet.create({
     },
     row:{
         flexDirection:'row',
+        alignItems:'center'
+    },
+    rowBetween:{
+        flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center'
     },
@@ -130,7 +134,7 @@ const styles=StyleSheet.create({
         paddingVertical:10
     },
     containerOrder:{
-        elevation:2,
+        elevation:3,
         backgroundColor:'white',
         marginHorizontal:10,
         marginVertical:10,
@@ -138,11 +142,31 @@ const styles=StyleSheet.create({
     },
     itemOrder:{
         paddingVertical:10,
-        marginHorizontal:20,
-        marginVertical:5,
+        marginHorizontal:20,    
         borderBottomWidth:1,
-        borderBottomColor:colors.gray4
-
+        borderBottomColor:colors.gray4,
+        justifyContent:'space-around',
+    },
+    btnTotal:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-around'
+    },
+    iconBookmark:{   
+        position:'absolute',
+        right:0,
+        top:-5,
+        width:20,
+        height:30,
+    },
+    favoriteBox:{
+        flexDirection:'row',
+        backgroundColor:'white',
+        paddingVertical:15,
+        paddingHorizontal:10,
+        elevation:sizes.small,
+        borderRadius:sizes.small,
+        marginVertical:sizes.small*2
     }
 
 

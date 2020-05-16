@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator
-        initialRouteName="Order"
+        initialRouteName="Favorite"
         tabBarOptions={{
         activeTintColor: orange,
         }}

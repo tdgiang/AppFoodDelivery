@@ -6,7 +6,7 @@ import {colors} from '../constants/theme';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
 
-
+import Rating from './Rating';
 export default class FoodNear extends Component {
      
     render() {
@@ -42,19 +42,7 @@ export default class FoodNear extends Component {
                         <Text h3 >Name foood</Text>
                         <Text gray >adress</Text>
                         <Block  flex={0.2} row center  space={'between'} >
-                            <Block flex={2} row center >
-                                <Icon
-                                name={"star"}
-                                color={colors.orange}
-                                />
-                                <Text  > 4.6 </Text>
-                                <Text gray > (233 ratings) </Text>
-                            </Block>
-                            <Block flex={1} >
-                                <View   style={boxFree}  >
-                                    <Text white >Free delivery</Text>
-                                </View>
-                            </Block>
+                            <Rating  />
                         </Block>
                     </Block>
                 </Block>
@@ -72,19 +60,7 @@ export default class FoodNear extends Component {
                         <Text h3 >Name foood</Text>
                         <Text gray >adress</Text>
                         <Block  flex={0.2} row center  space={'between'} >
-                            <Block flex={2} row center >
-                                <Icon
-                                name={"star"}
-                                color={colors.orange}
-                                />
-                                <Text  > 4.6 </Text>
-                                <Text gray > (233 ratings) </Text>
-                            </Block>
-                            <Block flex={1} >
-                                <View   style={boxFree}  >
-                                    <Text white >Free delivery</Text>
-                                </View>
-                            </Block>
+                            <Rating  />
                         </Block>
                     </Block>
                 </Block>
@@ -102,23 +78,12 @@ export default class FoodNear extends Component {
                         <Text h3 >Name foood</Text>
                         <Text gray >adress</Text>
                         <Block  flex={0.2} row center  space={'between'} >
-                            <Block flex={2} row center >
-                                <Icon
-                                name={"star"}
-                                color={colors.orange}
-                                />
-                                <Text  > 4.6 </Text>
-                                <Text gray > (233 ratings) </Text>
-                            </Block>
-                            <Block flex={1} >
-                                <View   style={boxFree}  >
-                                    <Text white >Free delivery</Text>
-                                </View>
-                            </Block>
+                            <Rating  />
                         </Block>
                     </Block>
                 </Block>
-                       
+                
+                
                     
             </Block>
             

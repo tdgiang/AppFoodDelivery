@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
-
+import Rating from './Rating';
 
 export default class FoodPopular extends Component {
      
@@ -27,18 +27,7 @@ export default class FoodPopular extends Component {
                             />
                             <Text h3 >Name foood</Text>
                             <Text gray >adress</Text>
-                            <Block  row center  space={'between'} >
-                            <Icon
-                                name={"star"}
-                                color={colors.orange}
-                            />
-
-                            <Text  >4.6</Text>
-                            <Text gray >(233 ratings)</Text>
-                            <View   style={boxFree}  >
-                                <Text white >Free delivery</Text>
-                            </View>
-                            </Block>
+                            <Rating /> 
                         </View>
                         <View   style={itemFoodPopular} >
                             <Image
