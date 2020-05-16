@@ -96,7 +96,7 @@ const styles=StyleSheet.create({
         marginRight:10
     },
     btnIcon:{
-        marginLeft:10
+        marginLeft:sizes.small*2
     },
     scrollStyle:{
         flex:1,
@@ -126,7 +126,8 @@ const styles=StyleSheet.create({
     rowBetween:{
         flexDirection:'row',
         justifyContent:'space-between',
-        alignItems:'center'
+        alignItems:'center',
+    
     },
     headerOrder:{
          paddingHorizontal:20,
@@ -167,6 +168,47 @@ const styles=StyleSheet.create({
         elevation:sizes.small,
         borderRadius:sizes.small,
         marginVertical:sizes.small*2
+    },
+    imgAvatar:{
+        width:100,
+        height:100,
+        borderRadius:50,
+        
+    },
+    boxMember:{
+        width:120,
+        paddingVertical:sizes.small,
+        justifyContent:'center',
+        alignItems:'center',
+         flexDirection:'row',
+        borderRadius:sizes.small,
+        backgroundColor:colors.accent,
+        marginTop:sizes.small*2
+    },
+    boxIconProfile:{
+        justifyContent:'center',
+        alignItems:'center',
+        width:40,
+        height:40,
+        backgroundColor:colors.lightBlue1,
+        borderRadius:25,
+        marginRight:sizes.small*2
+    },
+    boxItem:{
+        backgroundColor:'white',
+        marginTop:10,
+        elevation:3,
+        paddingHorizontal:10,
+        
+    },
+    hr:{
+        height:1,
+        width:width-30,
+        bottom:0,
+        right:0,
+        backgroundColor:colors.gray4,
+        position:"absolute",
+        
     }
 
 
