@@ -285,6 +285,13 @@ const styles=StyleSheet.create({
         marginHorizontal:10,
         marginTop:10
 
+    },
+    fullBar:{
+        margin:5,
+        width:width,
+        height:1,
+        backgroundColor:colors.gray2,
+        marginLeft:-20
     }
     
 

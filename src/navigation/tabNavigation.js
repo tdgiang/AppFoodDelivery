@@ -15,7 +15,7 @@ const orange="#e68a00";
 
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+function MyTabs( navigationStack) {
   return (
     <Tab.Navigator
         initialRouteName="Home"
@@ -26,7 +26,7 @@ function MyTabs() {
     >
       <Tab.Screen 
         name="Home"
-        component={Home}
+        component={ ()=> <Home navigationStack={navigationStack} />}
         options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color, size }) => (
@@ -78,7 +78,7 @@ export default class tabNavigation extends Component {
     render() {
         return (
             <NavigationContainer  independent={true} >
-                <MyTabs />
+                <MyTabs navigationStack={this.props.navigation} />
           </NavigationContainer>
         );
     }

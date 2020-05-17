@@ -36,7 +36,11 @@ export default class Welcome extends Component {
                     </Block>
                    
                     <Block  flex={1} middle  >
-                        <Button  style={btn}  color={'orange'}   >
+                        <Button  
+                            style={btn}  
+                            color={'orange'} 
+                            onPress={()=>this.props.navigation.navigate("Login")}
+                        >
                             <Text h3 white >Login</Text>      
                         </Button>
                         <Button style={btn}   color={'lightBlue'} >

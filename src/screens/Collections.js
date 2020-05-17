@@ -20,7 +20,7 @@ export default class Collections extends Component {
                 numColumns={2}
 
                 data={DataCollection}
-                renderItem={({item,index})=><ItemCollection item={item} />
+                renderItem={({item,index})=><ItemCollection  navigation={this.props.navigation} item={item} />
                      
                 }
 

@@ -16,7 +16,9 @@ import styles from '../style/styles';
                     <Text h2  bold >Danh sách </Text>
                     <View style={[boxShowAll,{marginRight:15}]} >
                         <Text>Show all</Text>
-                         <TouchableOpacity>
+                         <TouchableOpacity
+                            onPress={()=> this.props.navigationStack.navigationStack.navigate("Collections") }
+                         >
                             <Icon
                                     name={"caret-right"}
                                     size={20}

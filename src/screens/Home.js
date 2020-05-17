@@ -32,9 +32,9 @@ export default class Home extends Component {
                     />
                   </Button>
                 </Block>
-                <FoodPopular />
-                <FoodNear />
-                <CollectionFood />
+                <FoodPopular navigationStack={this.props.navigationStack}   />
+                <FoodNear navigationStack={this.props.navigationStack}    />
+                <CollectionFood navigationStack={this.props.navigationStack}   />
 
              </ScrollView>
             

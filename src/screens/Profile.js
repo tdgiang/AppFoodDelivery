@@ -55,7 +55,7 @@ export default class Profile extends Component {
         return (
            <ScrollView  style={{flex:1}}  >
                <Block  flex={1}     center row  padding={[20,20]} >
-                   <Block flex={1}  >
+                   <Block flex={2}  >
                         <Image
                                 source={avatar}
                                 style={imgAvatar}

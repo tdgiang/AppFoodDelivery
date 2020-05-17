@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
+import ItemFoodNear from '../component/ItemFoodNear';
+
 
 import Rating from './Rating';
 export default class FoodNear extends Component {
@@ -28,60 +30,12 @@ export default class FoodNear extends Component {
                     </View>
                 </Block>
                     
-                <Block   
-                    row style={itemFoodNear} 
-                    padding={[15,0]} 
-                    
-                >
-                    <Image
-                    source={img}
-                        style={imgFoodNear}
-                        resizeMode={'cover'}
-                        />
-                    <Block space={'around'} >
-                        <Text h3 >Name foood</Text>
-                        <Text gray >adress</Text>
-                        <Block  flex={0.2} row center  space={'between'} >
-                            <Rating  />
-                        </Block>
-                    </Block>
-                </Block>
-                <Block   
-                    row style={itemFoodNear} 
-                    padding={[15,0]} 
-                    
-                >
-                    <Image
-                    source={img}
-                        style={imgFoodNear}
-                        resizeMode={'cover'}
-                        />
-                    <Block space={'around'} >
-                        <Text h3 >Name foood</Text>
-                        <Text gray >adress</Text>
-                        <Block  flex={0.2} row center  space={'between'} >
-                            <Rating  />
-                        </Block>
-                    </Block>
-                </Block>
-                <Block   
-                    row style={itemFoodNear} 
-                    padding={[15,0]} 
-                    
-                >
-                    <Image
-                    source={img}
-                        style={imgFoodNear}
-                        resizeMode={'cover'}
-                        />
-                    <Block space={'around'} >
-                        <Text h3 >Name foood</Text>
-                        <Text gray >adress</Text>
-                        <Block  flex={0.2} row center  space={'between'} >
-                            <Rating  />
-                        </Block>
-                    </Block>
-                </Block>
+               <ItemFoodNear />
+               <ItemFoodNear />
+               <ItemFoodNear />
+               
+                 
+                
                 
                 
                     

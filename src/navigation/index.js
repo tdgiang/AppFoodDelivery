@@ -17,6 +17,7 @@ import VerifyPhone from '../screens/VerifyPhone';
 import VerifyOTP from '../screens/VerifyOTP';
 import tabNavigation from './tabNavigation';
 import EditProfile from '../screens/EditProfile';
+import Search from '../screens/Search';
  
 const Stack = createStackNavigator();
 
@@ -33,11 +34,21 @@ export default class index extends Component {
             
         }
     }
+    _settingOptionBack(){
+        return{
+            title:"",
+            headerStyle: {  
+                 height:0,
+              
+              }
+            
+        }
+    }
 
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="EditProfile">
+                <Stack.Navigator initialRouteName="Welcome">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}
@@ -57,7 +68,7 @@ export default class index extends Component {
                     <Stack.Screen 
                         name="Login" 
                         component={Login} 
-                        options={this._settingOption()}
+                        options={this._settingOptionBack()}
                     />
                     <Stack.Screen 
                         name="ForgotPassword" 
@@ -102,6 +113,11 @@ export default class index extends Component {
                     <Stack.Screen 
                         name="EditProfile" 
                         component={EditProfile} 
+                        options={this._settingOption()}
+                    />
+                    <Stack.Screen 
+                        name="Search" 
+                        component={Search} 
                         options={this._settingOption()}
                     />
                 </Stack.Navigator>

@@ -7,10 +7,12 @@ import { View,
     TextInput,
     KeyboardAvoidingView,
     Keyboard,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    ImageBackground
 } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const img=require('../constants/images/login2.jpg')
 
@@ -26,12 +28,23 @@ export default class Login extends Component {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <Block flex={1} >
                         <Block  flex={3}  >
-                            <Image
+                            <ImageBackground
                                 resizeMode={'cover'}
                                 source={img}
                                 style={imgStyle}
                                 
-                            />
+                            >
+                                <TouchableOpacity>
+                                    <Icon
+                                        name={'arrow-left'}
+                                        size={20}
+                                        color={'white'}
+                                        style={{margin:20}}
+
+                                    />
+                                </TouchableOpacity>
+
+                            </ImageBackground>
                         </Block>
 
                         <Block  
