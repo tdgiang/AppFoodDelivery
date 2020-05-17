@@ -171,10 +171,11 @@ const styles=StyleSheet.create({
         marginVertical:sizes.small*2
     },
     imgAvatar:{
-        width:100,
-        height:100,
-        borderRadius:50,
-        
+        width:140,
+        height:140,
+        borderRadius:70,
+        borderWidth:2,
+        borderColor:'white'
     },
     boxMember:{
         width:120,
@@ -248,7 +249,44 @@ const styles=StyleSheet.create({
         height:120,
         marginRight:10,
         borderRadius:sizes.small
+    },
+    containerProfile:{
+        backgroundColor:'white',
+        borderRadius:sizes.small*2,
+        elevation:sizes.small
+        
+    },
+    boxAvatar:{
+        width:140,
+        height:140,
+        position:'absolute',
+        left:width/2-80,
+        top:-60,
+        borderRadius:70,
+   
+    },
+    boxIconPhoto:{
+        position:'absolute',
+        bottom:0,
+        right:0,
+        width:40,
+        height:40,
+        backgroundColor:colors.red,
+        borderRadius:25,
+        justifyContent:'center',
+        alignItems:'center'
+         
+    },
+    txtInputProfile:{
+        paddingVertical:10,
+         fontSize:16,
+        borderBottomColor:colors.gray4,
+        borderBottomWidth:1,
+        marginHorizontal:10,
+        marginTop:10
+
     }
+    
 
 
 

@@ -16,6 +16,7 @@ import CollectionDetail from '../screens/CollectionDetail';
 import VerifyPhone from '../screens/VerifyPhone';
 import VerifyOTP from '../screens/VerifyOTP';
 import tabNavigation from './tabNavigation';
+import EditProfile from '../screens/EditProfile';
  
 const Stack = createStackNavigator();
 
@@ -36,7 +37,7 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="FoodDetail">
+                <Stack.Navigator initialRouteName="EditProfile">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}
@@ -96,6 +97,11 @@ export default class index extends Component {
                     <Stack.Screen 
                         name="Welcome" 
                         component={Welcome} 
+                        options={this._settingOption()}
+                    />
+                    <Stack.Screen 
+                        name="EditProfile" 
+                        component={EditProfile} 
                         options={this._settingOption()}
                     />
                 </Stack.Navigator>
