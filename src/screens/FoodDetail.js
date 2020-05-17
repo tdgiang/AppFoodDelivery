@@ -49,7 +49,9 @@ export default class FoodDetail extends Component {
                     >  
                     
                     <View style={headerFoodDetail} >
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=>this.props.navigation.pop()}
+                        >
                             <Icon
                                 name={'chevron-left'}
                                 size={25}

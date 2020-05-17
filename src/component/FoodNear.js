@@ -5,11 +5,40 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
-import ItemFoodNear from '../component/ItemFoodNear';
+
 
 
 import Rating from './Rating';
 export default class FoodNear extends Component {
+    renderItemFoodNear(){
+        const  {imgFoodNear}=styles;
+        return(
+            <TouchableOpacity
+                onPress={()=>this.props.navigationStack.navigationStack.navigate("FoodDetail")}
+            >
+                    <Block   
+                        row margin={[0,0]} 
+                        padding={[15,0]} 
+                        
+                    >
+                        <Image
+                        source={img}
+                            style={imgFoodNear}
+                            resizeMode={'cover'}
+                            />
+                        <Block space={'around'} >
+                            <Text h3 >Name foood</Text>
+                            <Text gray >adress</Text>
+                            <Block  flex={0.2} row center  space={'between'} >
+                                <Rating  />
+                            </Block>
+                        </Block>
+                    </Block>
+                </TouchableOpacity>
+        )
+    }
+
+
      
     render() {
         const  {imgFoodNear,itemFoodNear,boxFree,btnIcon,boxShowAll}=styles;
@@ -30,15 +59,9 @@ export default class FoodNear extends Component {
                     </View>
                 </Block>
                     
-               <ItemFoodNear />
-               <ItemFoodNear />
-               <ItemFoodNear />
-               
-                 
-                
-                
-                
-                    
+               {this.renderItemFoodNear()}
+               {this.renderItemFoodNear()}
+               {this.renderItemFoodNear()}           
             </Block>
             
         );

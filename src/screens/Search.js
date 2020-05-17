@@ -5,9 +5,36 @@ import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
-import ItemFoodNear from '../component/ItemFoodNear';
 export default class Search extends Component {
-     
+    
+    renderItemFoodNear(){
+        const  {imgFoodNear}=styles;
+        return(
+            <TouchableOpacity>
+                    <Block   
+                        row margin={[0,0]} 
+                        padding={[15,0]} 
+                        
+                    >
+                        <Image
+                        source={img}
+                            style={imgFoodNear}
+                            resizeMode={'cover'}
+                            />
+                        <Block space={'around'} >
+                            <Text h3 >Name foood</Text>
+                            <Text gray >adress</Text>
+                            <Block  flex={0.2} row center  space={'between'} >
+                                <Rating  />
+                            </Block>
+                        </Block>
+                    </Block>
+                </TouchableOpacity>
+        )
+    }
+
+
+
     render() {
         const  {btn,txtInput,fullBar}=styles;
         return (
@@ -49,12 +76,10 @@ export default class Search extends Component {
                   <ScrollView
                         showsVerticalScrollIndicator={false}
                       >
-                          <ItemFoodNear />
-                          <ItemFoodNear />
-                          <ItemFoodNear />
-                          <ItemFoodNear />
-                          <ItemFoodNear />
-                          <ItemFoodNear />
+                          {this.renderItemFoodNear()}
+                          {this.renderItemFoodNear()}
+                          {this.renderItemFoodNear()}
+                          
                     </ScrollView>
               </Block>
             

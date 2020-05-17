@@ -35,6 +35,7 @@ import styles from '../style/styles';
                 
                     >
                         <TouchableOpacity
+                            onPress={()=>this.props.navigationStack.navigationStack.navigate("CollectionDetail")}
                             style={{marginRight:15}}
                         >
                             <Image

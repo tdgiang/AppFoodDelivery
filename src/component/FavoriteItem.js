@@ -13,7 +13,10 @@ export default class FoodNear extends Component {
     render() {
         const {imgFoodNear,iconBookmark,favoriteBox,row}=styles
         return (
-            <View  style={favoriteBox}  >
+            <TouchableOpacity  
+                style={favoriteBox} 
+                onPress={()=>this.props.navigation.navigate("FoodDetail")}
+            >
                     <Image
                         source={img}
                         style={imgFoodNear}
@@ -44,7 +47,7 @@ export default class FoodNear extends Component {
                     </Block>
 
 
-                </View>
+                </TouchableOpacity>
             
         );
     }

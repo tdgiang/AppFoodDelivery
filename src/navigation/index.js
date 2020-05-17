@@ -48,7 +48,7 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Welcome">
+                <Stack.Navigator initialRouteName="Home">
                     <Stack.Screen 
                         name="Collections" 
                         component={Collections}

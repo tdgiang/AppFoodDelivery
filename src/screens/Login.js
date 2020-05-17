@@ -34,7 +34,9 @@ export default class Login extends Component {
                                 style={imgStyle}
                                 
                             >
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={()=>this.props.navigation.pop()}
+                                >
                                     <Icon
                                         name={'arrow-left'}
                                         size={20}
