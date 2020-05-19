@@ -12,13 +12,13 @@ import CollectionFood from '../component/CollectionFood';
 export default class Home extends Component {
      
     render() {
-      const  {scrollStyle,txtInputHome,btnSearch,imgFoodPopular,itemFoodPopular,boxFree}=styles;
+      const  {scrollStyle,txtInputHome,btnSearch}=styles;
         return (
              <ScrollView 
                 style={scrollStyle}   
                 showsVerticalScrollIndicator={false}
               >
-                <Block row   center style={{height:55}}    >
+                <Block row   center style={{height:55}}  margin={[10,0,0,0]}  >
                   <TextInput
                     placeholder={'Search'}
                     style={txtInputHome}
@@ -32,9 +32,9 @@ export default class Home extends Component {
                     />
                   </Button>
                 </Block>
-                <FoodPopular navigationStack={this.props.navigationStack}   />
-                <FoodNear navigationStack={this.props.navigationStack}    />
-                <CollectionFood navigationStack={this.props.navigationStack}   />
+                <FoodPopular navigation={this.props.navigation}   />
+                <FoodNear navigation={this.props.navigation}    />
+                <CollectionFood navigation={this.props.navigation}   />
 
              </ScrollView>
             

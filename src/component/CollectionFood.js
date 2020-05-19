@@ -17,7 +17,7 @@ import styles from '../style/styles';
                     <View style={[boxShowAll,{marginRight:15}]} >
                         <Text>Show all</Text>
                          <TouchableOpacity
-                            onPress={()=> this.props.navigationStack.navigationStack.navigate("Collections") }
+                            onPress={()=> this.props.navigation.navigate("Collections") }
                          >
                             <Icon
                                     name={"caret-right"}
@@ -35,7 +35,7 @@ import styles from '../style/styles';
                 
                     >
                         <TouchableOpacity
-                            onPress={()=>this.props.navigationStack.navigationStack.navigate("CollectionDetail")}
+                            onPress={()=> this.props.navigation.navigate("CollectionDetail")}
                             style={{marginRight:15}}
                         >
                             <Image

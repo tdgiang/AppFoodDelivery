@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
  
-import Home from '../screens/Home';
+import HomeStack from './HomeStack';
 import Order from '../screens/Order';
-import Favorite from '../screens/Favorite';
+import FavoriteStack from './FavoriteStack';
 import Profile from '../screens/Profile';
+import {colors} from '../constants/theme';
  
-const orange="#e68a00";
 
 
 const Tab = createBottomTabNavigator();
@@ -18,15 +18,15 @@ const Tab = createBottomTabNavigator();
 function MyTabs( navigationStack) {
   return (
     <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="HomeStack"
         tabBarOptions={{
-        activeTintColor: orange,
+        activeTintColor: colors.orange,
         }}
     
     >
       <Tab.Screen 
-        name="Home"
-        component={ ()=> <Home navigationStack={navigationStack} />}
+        name="HomeStack"
+        component={ HomeStack}
         options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color, size }) => (
@@ -37,7 +37,7 @@ function MyTabs( navigationStack) {
       />
       <Tab.Screen 
         name="Order" 
-        component={Order} 
+        component={Order } 
         options={{
             tabBarLabel: 'Order',
             tabBarIcon: ({ color, size }) => (
@@ -47,8 +47,8 @@ function MyTabs( navigationStack) {
       
       />
       <Tab.Screen 
-        name="Favorite" 
-        component={Favorite} 
+        name="FavoriteStack" 
+        component={FavoriteStack} 
         options={{
             tabBarLabel: 'Favorite',
             tabBarIcon: ({ color, size }) => (

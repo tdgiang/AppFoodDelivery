@@ -1,24 +1,16 @@
 import  React,{Component} from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Collections from '../screens/Collections';
 import Welcome from '../screens/Welcome';
-import Favorite from '../screens/Favorite';
-import FoodDetail from '../screens/FoodDetail';
 import ForgotPassword from '../screens/ForgotPassword';
-//import Home from '../screens/Home';
-import ListFoods from '../screens/ListFoods';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import CollectionDetail from '../screens/CollectionDetail';
+
 import VerifyPhone from '../screens/VerifyPhone';
 import VerifyOTP from '../screens/VerifyOTP';
 import tabNavigation from './tabNavigation';
-import EditProfile from '../screens/EditProfile';
-import Search from '../screens/Search';
- 
+
 const Stack = createStackNavigator();
 
 export default class index extends Component {
@@ -38,8 +30,8 @@ export default class index extends Component {
         return{
             title:"",
             headerStyle: {  
-                 height:0,
-              
+                height:50,
+                elevation:1
               }
             
         }
@@ -48,52 +40,21 @@ export default class index extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
-                    <Stack.Screen 
-                        name="Collections" 
-                        component={Collections}
-                        
-                        options={this._settingOption()}
-                    />
-                    <Stack.Screen 
-                        name="Favorite" 
-                        component={Favorite} 
-                        options={this._settingOption()}
-                    />
-                    <Stack.Screen 
-                        name="FoodDetail" 
-                        component={FoodDetail} 
-                        options={this._settingOption()}
-                    />
+                <Stack.Navigator initialRouteName="Welcome">
                     <Stack.Screen 
                         name="Login" 
                         component={Login} 
-                        options={this._settingOptionBack()}
+                        options={this._settingOption()}
                     />
                     <Stack.Screen 
                         name="ForgotPassword" 
                         component={ForgotPassword} 
-                        options={this._settingOption()}
-                    />
-                    <Stack.Screen 
-                        name="Home" 
-                        component={tabNavigation} 
-                        options={this._settingOption()}
+                        options={this._settingOptionBack()}
                     />
                     <Stack.Screen 
                         name="SignUp" 
                         component={SignUp} 
-                        options={this._settingOption()}
-                    />
-                     <Stack.Screen 
-                        name="ListFoods" 
-                        component={ListFoods} 
-                        options={this._settingOption()}
-                    />
-                     <Stack.Screen 
-                        name="CollectionDetail" 
-                        component={CollectionDetail} 
-                        options={this._settingOption()}
+                        options={this._settingOptionBack()}
                     />
                      <Stack.Screen 
                         name="VerifyPhone" 
@@ -111,15 +72,11 @@ export default class index extends Component {
                         options={this._settingOption()}
                     />
                     <Stack.Screen 
-                        name="EditProfile" 
-                        component={EditProfile} 
+                        name="tabNavigation" 
+                        component={tabNavigation} 
                         options={this._settingOption()}
                     />
-                    <Stack.Screen 
-                        name="Search" 
-                        component={Search} 
-                        options={this._settingOption()}
-                    />
+                  
                 </Stack.Navigator>
             </NavigationContainer>
             

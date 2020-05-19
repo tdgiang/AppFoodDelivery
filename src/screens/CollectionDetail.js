@@ -18,7 +18,7 @@ export default class CollectionDetail extends Component {
                     source={img}
                 >
                     <TouchableOpacity
-                        
+                        onPress={()=> this.props.navigation.pop()}
                     >
                         <Icon
                             name={'arrow-left'}

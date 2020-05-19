@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { View ,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import Header from '../component/Hearder';
 
 export default class Order extends Component {
      
     render() {
-        const {btn,boxTotal,boxFree,headerOrder,rowBetween,containerOrder,itemOrder,btnTotal}=styles
+        const {btn,boxTotal,headerCollections,boxFree,headerOrder,rowBetween,containerOrder,itemOrder,btnTotal}=styles
         return (
             <Block   >
+                <Header nameTab={"My Order"} />
                 <Block  flex={3}  padding={[10,10]} >
                     <View  style={containerOrder} >
                         <View style={headerOrder} >

@@ -9,7 +9,7 @@ export default class SignUp extends Component {
     render() {
         const  {btn,txtInput}=styles;
         return (
-             <Block  padding={[0,30]} >
+             <Block  padding={[0,30]} color={'white'}  >
                  <Block flex={1}  center middle >
                     <Text  big > Create an account</Text>
                  </Block>

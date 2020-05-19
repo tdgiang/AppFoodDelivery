@@ -11,10 +11,10 @@ import styles from '../style/styles';
 import Rating from './Rating';
 export default class FoodNear extends Component {
     renderItemFoodNear(){
-        const  {imgFoodNear}=styles;
+        const  {imgFoodNear,rowBetween}=styles;
         return(
             <TouchableOpacity
-                onPress={()=>this.props.navigationStack.navigationStack.navigate("FoodDetail")}
+                onPress={()=>this.props.navigation.navigate("FoodDetail")}
             >
                     <Block   
                         row margin={[0,0]} 
@@ -27,7 +27,10 @@ export default class FoodNear extends Component {
                             resizeMode={'cover'}
                             />
                         <Block space={'around'} >
-                            <Text h3 >Name foood</Text>
+                            <View style={rowBetween}>
+                                <Text title bold >Name foood</Text>
+                                <Text title >33 $</Text>
+                            </View>
                             <Text gray >adress</Text>
                             <Block  flex={0.2} row center  space={'between'} >
                                 <Rating  />

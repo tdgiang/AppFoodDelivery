@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View,ScrollView,ImageBackground ,TouchableOpacity,Image} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 
 const img=require('../constants/images/che/che01.jpg');
@@ -53,17 +53,17 @@ export default class FoodDetail extends Component {
                             onPress={()=>this.props.navigation.pop()}
                         >
                             <Icon
-                                name={'chevron-left'}
-                                size={25}
+                                name={'arrow-left'}
+                                size={20}
                                 color={'white'}
-
+                                 
                             />
                         </TouchableOpacity>
                         <View style={row} >
                         <TouchableOpacity  >
                             <Icon
                                 name={'bookmark'}
-                                size={25}
+                                size={20}
                                 color={'white'}
                                 style={{marginRight:20}}
 
@@ -72,7 +72,7 @@ export default class FoodDetail extends Component {
                         <TouchableOpacity>
                             <Icon
                                 name={'shopping-cart'}
-                                size={25}
+                                size={20}
                                 color={'white'}
 
                             />

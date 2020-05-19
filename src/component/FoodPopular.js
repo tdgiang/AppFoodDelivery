@@ -14,7 +14,7 @@ export default class FoodPopular extends Component {
         const  {imgFoodPopular,itemFoodPopular}=styles;
         return(
             <TouchableOpacity
-                onPress={()=>console.log(this.props.navigationStack.navigationStack.navigate("FoodDetail"))}
+                onPress={()=>this.props.navigation.navigate("FoodDetail")}
             >
                 <View   style={itemFoodPopular} >
                             <Image
@@ -22,7 +22,11 @@ export default class FoodPopular extends Component {
                             style={imgFoodPopular}
                             resizeMode={'cover'}
                             />
-                            <Text h3 >Name foood</Text>
+                            <Block row  space={'between'}>
+                                <Text title bold >Name foood</Text>
+                                <Text title >33 $</Text>
+                            </Block>
+                            
                             <Text gray >adress</Text>
                             <Rating /> 
                 </View>

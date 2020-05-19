@@ -10,7 +10,7 @@ const colors = {
   gray2:"#cccccc",
   gray1:"#bfbfbf",
   gray4:"#e6e6e6",
-  orange:"#e68a00",
+  orange:"#FF8C00",
   lightBlue:"#1a8cff",
   lightBlue1:"#008ae6",
   yellow:"#e6e600",
@@ -30,8 +30,8 @@ const sizes = {
   h1: 26,
   h2: 20,
   h3: 18,
-  title: 18,
-  header: 16,
+  title: 16,
+  
   body: 14,
   caption: 12
 };

@@ -6,7 +6,7 @@ const styles=StyleSheet.create({
 
     imgStyle:{
         width,
-        height:(height*3)/7
+        height:height/2.5
     },
     body:{
         borderTopLeftRadius:15,
@@ -292,6 +292,24 @@ const styles=StyleSheet.create({
         height:1,
         backgroundColor:colors.gray2,
         marginLeft:-20
+    },
+    headerCollections:{
+        height:50,
+        borderBottomColor:colors.gray2,
+        borderBottomWidth:1
+    
+    },
+    slideLogin:{
+        width,
+        height:height/2.5,
+         
+    } ,
+    dot:{
+        width:10,
+        marginHorizontal:5,
+        height:10,
+        borderRadius:10,
+        backgroundColor:'white'
     }
     
 

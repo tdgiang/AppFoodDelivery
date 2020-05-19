@@ -12,7 +12,7 @@ export default class ForgotPassword extends Component {
             behavior={'height'}
             >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-                    <Block padding={[50,30]}  flex={1}  space={'around'}     >
+                    <Block padding={[50,30]}  flex={1}  space={'around'}  color={'white'}   >
                         <Text align='center' big >Forgot password</Text>
                         <Text  title align='center' >Please enter your email address.You will receive a link
                             to create a new a password via email.
