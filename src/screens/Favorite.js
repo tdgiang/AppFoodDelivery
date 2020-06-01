@@ -4,7 +4,10 @@ import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import FavoriteItem from '../component/FavoriteItem';
 import Header from '../component/Hearder';
-export default class Favorite extends Component {
+
+import {connect}  from 'react-redux';
+
+class Favorite extends Component {
      
     render() {
          
@@ -20,11 +23,9 @@ export default class Favorite extends Component {
                         showsVerticalScrollIndicator={false}
                 
                 >
-                        <FavoriteItem navigation={this.props.navigation} />
-                        <FavoriteItem navigation={this.props.navigation} />
-                        <FavoriteItem navigation={this.props.navigation} />
-                        <FavoriteItem navigation={this.props.navigation} />
-                        <FavoriteItem navigation={this.props.navigation} />
+                    {this.props.foods.map(e=>{
+                        return <FavoriteItem navigation={this.props.navigation} />
+                    })}
                     </ScrollView>
                     
             </Block>
@@ -33,3 +34,10 @@ export default class Favorite extends Component {
         );
     }
 }
+const mapStateToProps=(state)=>{
+    return{
+        foods:state.foods
+    }
+}
+
+export default  connect(mapStateToProps)(Favorite);
