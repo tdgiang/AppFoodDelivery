@@ -168,7 +168,21 @@ const styles=StyleSheet.create({
         paddingHorizontal:10,
         elevation:sizes.small,
         borderRadius:sizes.small,
-        marginVertical:sizes.small*2
+        marginVertical:sizes.small*2,
+        height:130
+         
+    },
+    rowSwipeFavorite:{
+        flexDirection:'row',
+        backgroundColor:'white',
+        justifyContent: 'space-between',
+        paddingVertical:15,
+        paddingHorizontal:10,
+        elevation:sizes.small,
+        borderRadius:sizes.small,
+        marginVertical:sizes.small*2,
+        height:130
+         
     },
     imgAvatar:{
         width:140,
@@ -310,7 +324,23 @@ const styles=StyleSheet.create({
         height:10,
         borderRadius:10,
         backgroundColor:'white'
-    }
+    },
+    // swiper
+    backRightBtn: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 0,
+        width: 75,
+    },
+    backRightBtnRight: {
+        backgroundColor: 'red',
+        right: 0,
+        borderTopRightRadius:sizes.small,
+        borderBottomRightRadius:sizes.small
+       
+    },
     
 
 

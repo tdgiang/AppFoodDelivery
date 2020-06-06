@@ -19,7 +19,7 @@ export default class FavoriteItem extends Component {
             <TouchableOpacity  
                 key={_id}
                 style={favoriteBox} 
-                onPress={()=> navigation.navigate("FoodDetail")}
+                onPress={()=> navigation.navigate("FoodDetail",{food:this.props.item})}
             >
                     <Image
                         source={img}

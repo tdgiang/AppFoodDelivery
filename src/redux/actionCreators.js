@@ -50,3 +50,14 @@ export const addFavoriteFail=()=>{
         type:"ADD_FAVORITE_FAILED",
     }
 }
+export const deleteFavorite=(idFood)=>{
+    return{
+        type:"DELETE_FAVORITE",
+        idFood
+    }
+}
+export const deleteFavoriteFail=()=>{
+    return{
+        type:"DELETE_FAVORITE_FAILED",
+    }
+}

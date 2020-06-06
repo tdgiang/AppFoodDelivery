@@ -29,8 +29,8 @@ function* getFavorite(){
       }
 }
 
-function* addFavorite(arrFavorites){
-    yield console.log("This is func addFavorite from api");
+function* storageFavorite(arrFavorites){
+    yield console.log("This is func storageFavorite from api");
     try {
         const jsonValue = JSON.stringify(arrFavorites);
         yield AsyncStorage.setItem('@arrFavorite6', jsonValue);
@@ -48,5 +48,5 @@ function* addFavorite(arrFavorites){
 export const api={
     getFoodsFromAPI,
     getFavorite,
-    addFavorite
+    storageFavorite
 }
