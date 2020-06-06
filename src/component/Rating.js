@@ -18,8 +18,8 @@ export default class Rating extends Component {
                     name={"star"}
                     color={colors.orange}
                     />
-                    <Text  > 4.6 </Text>
-                    <Text gray > (233 ratings) </Text>
+                    <Text  > {this.props.rating} </Text>
+                    <Text gray > ({this.props.bookmark} ratings) </Text>
                 </Block>
                 <View   style={boxFree}  >
                     <Text white >Free delivery</Text>

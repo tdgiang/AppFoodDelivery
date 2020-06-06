@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { View,TextInput,ScrollView,Image ,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {colors} from '../constants/theme';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
-
+import DataCollection from '../constants/data/DataCollection';
  export default class CollectionFood extends Component {
      
      render() {
@@ -34,35 +33,19 @@ import styles from '../style/styles';
                         style={{marginVertical:10}}
                 
                     >
-                        <TouchableOpacity
+                        {DataCollection.map(e=>(
+                            <TouchableOpacity
+                            key={e._id}
                             onPress={()=> this.props.navigation.navigate("CollectionDetail")}
                             style={{marginRight:15}}
                         >
                             <Image
-                            source={img}
+                            source={e.img}
                             style={imgCollectionHome}
                             resizeMode={'cover'}
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity
-                            style={{marginRight:15}}
-                        >
-                            <Image
-                            source={img}
-                            style={imgCollectionHome}
-                            resizeMode={'cover'}
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={{marginRight:15}}
-                        >
-                            <Image
-                            source={img}
-                            style={imgCollectionHome}
-                            resizeMode={'cover'}
-                            />
-                        </TouchableOpacity>
-                    
+                        ))}
                     </ScrollView>
                 </Block>
                 

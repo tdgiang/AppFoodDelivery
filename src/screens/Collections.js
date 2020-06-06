@@ -39,10 +39,11 @@ export default class Collections extends Component {
                     columnWrapperStyle={{
                         justifyContent:'space-between'
                     }}
+                    keyExtractor={item=>item._id}
                     showsVerticalScrollIndicator={false}
                     numColumns={2}
                     data={DataCollection}
-                    renderItem={({item,index})=><ItemCollection  navigation={this.props.navigation} item={item} />
+                    renderItem={({item,index})=><ItemCollection key={`${index}`}  navigation={this.props.navigation} item={item} />
                         
                     }
                 />

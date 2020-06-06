@@ -3,7 +3,6 @@ import {api}  from './api';
 
 function* fetchFoods(){
     try {
-        console.log("This is func fetchFoods");
         const receivedFoods=yield api.getFoodsFromAPI();
         yield put({type:"FETCH_SUCCEEDED",receivedFoods:receivedFoods});
         

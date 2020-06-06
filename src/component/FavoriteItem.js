@@ -7,14 +7,17 @@ const img=require('../constants/images/login1.jpg')
 const imgIcon=require('../constants/images/icons/location.png');
 import styles from '../style/styles';
 
+
 import Rating from './Rating';
-export default class FoodNear extends Component {
+export default class FavoriteItem extends Component {
      
     render() {
         const {imgFoodNear,iconBookmark,favoriteBox,row}=styles
         const navigation=this.props.navigation;
+        const {_id,name,price,address,rating,img}=this.props.item ;
         return (
             <TouchableOpacity  
+                key={_id}
                 style={favoriteBox} 
                 onPress={()=> navigation.navigate("FoodDetail")}
             >
@@ -31,18 +34,18 @@ export default class FoodNear extends Component {
                             color={colors.accent}
 
                         />
-                        <Text  h2>Name food</Text>
-                        <Text gray >33$</Text>
+                        <Text bold  h3>{name}</Text>
+                        <Text gray >${price}</Text>
                         <View  style={row} >
                             <Image
                                 source={imgIcon}
                                 style={{width:20,height:20}}
 
                             />
-                            <Text gray > Adres2s</Text>
+                            <Text gray numberOfLines={1} >{address}</Text>
                         </View>
                       
-                        <Rating />
+                        <Rating rating={rating} />
 
                         
                        

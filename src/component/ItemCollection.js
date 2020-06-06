@@ -3,12 +3,15 @@ import { ImageBackground,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from './index';
 import styles from '../style/styles';
 import LinearGradient from 'react-native-linear-gradient';
+
+
 export default class ItemCollection extends Component {
      render() {
             const  {itemCollection}=styles;
-            const {img,name,count}=this.props.item;
+            const {name,img,kids,_id}=this.props.item;
             return (
                 <TouchableOpacity
+                key={_id}
                     style={itemCollection}
                     onPress={()=>this.props.navigation.navigate("CollectionDetail")}
                 >
@@ -24,7 +27,7 @@ export default class ItemCollection extends Component {
                                 style={{flex:1,justifyContent:'center'}}
                         >  
                             <Text white  align={'center'} h3 >{name}</Text>
-                            <Text white  align={'center'} h3 >{`${count} món`}</Text>
+                            <Text white  align={'center'} h3 >{`${kids.length} món`}</Text>
                         </LinearGradient>
                     </ImageBackground>
                 </TouchableOpacity>

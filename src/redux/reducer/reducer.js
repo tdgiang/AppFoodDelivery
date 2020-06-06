@@ -2,10 +2,11 @@ import {combineReducers} from 'redux';
 
 
 import foodsReducer from './foodsReducer';
-
+import favoriteReducer from './favoriteReducer';
 
 const reducer=combineReducers({
-    foods:foodsReducer
+    foods:foodsReducer,
+    favorites:favoriteReducer
 })
 
 

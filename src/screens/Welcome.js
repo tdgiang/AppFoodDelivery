@@ -4,14 +4,15 @@ import {Block,Button,Text} from '../component/index';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {fetchFoods} from '../redux/actionCreators';
+import {fetchFoods,getFavorite} from '../redux/actionCreators';
 import {connect}  from 'react-redux';
 const bgWelcome=require('../constants/images/bgWelcome1.jpg')
 
 
 class Welcome extends Component {
     componentDidMount(){
-        this.props.fetchFoods();
+       // this.props.fetchFoods();
+        this.props.getFavorite();
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
@@ -59,9 +60,13 @@ class Welcome extends Component {
     }
 }
 
+const mapStateToProps=(state)=>{
+    return {
+        favorites:state.favorites
+    }
+  }
 
-
-export default  connect(null,{fetchFoods})(Welcome);
+export default  connect(mapStateToProps,{fetchFoods,getFavorite})(Welcome);
 
 const styles=StyleSheet.create({
     bgStyle:{

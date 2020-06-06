@@ -1,36 +1,21 @@
 import React, { Component } from 'react';
-import { View,ScrollView,ImageBackground ,TouchableOpacity,Image} from 'react-native';
+import { View,ScrollView,ImageBackground ,TouchableOpacity,Image, Alert} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
-
+import {connect} from 'react-redux';
 const img=require('../constants/images/che/che01.jpg');
-
+import {addFavorite} from '../redux/actionCreators';
 
 import ContainerFeedBack from '../component/ContainerFeedBack';
 
-const DataFood={
-    id:1,
-    img,
-    name:"Chè khúc bạch",
-    adress:"234 Trâu Quỳ",
-    freeDelivery:true,
-    range:2.3,
-    time:33,
-    ratings:4.5,
-    bookmark:1.2,
-    photo:344,
-    depcription:"Chè khúc bạch là một món chè không còn xa lạ gì với người Việt, được người dân cả 3 miền yêu thích và thường được ăn nhiều nhất vào mùa hè. Cái tên chè khúc bạch có nguồn gốc chính từ hình dáng của chúng. Chữ “Khúc” nghĩa là cắt thành từng khúc. Chữ bạch là vì món ăn này có màu trắng của kem và sữa tươi."
 
-}
-
-
-export default class FoodDetail extends Component {
+ class FoodDetail extends Component {
      
     render() {
         const {boxSlideDetail,bodyFoodDetail,boxFree,headerFoodDetail,row,imgFoodDetail}=styles;
-        const {name,img,adress,time,range,ratings,bookmark,photo,depcription}=DataFood;
+        const {_id,name,img,address,bookmark,photo,description,rating,nameStore}=this.props.route.params.food;
         return (
             <ScrollView
                showsVerticalScrollIndicator={false}
@@ -60,7 +45,22 @@ export default class FoodDetail extends Component {
                             />
                         </TouchableOpacity>
                         <View style={row} >
-                        <TouchableOpacity  >
+                        <TouchableOpacity 
+                            onPress={()=>{
+                                if(this.props.favorites==null){
+                                    this.props.addFavorite(this.props.route.params.food);
+                                }else{
+                                    if(this.props.favorites.find(item=>item._id===_id)){
+                                        alert("Đồ ăn này đã tồn tại trong mục ưa thích!");
+                                    }else{
+                                        this.props.addFavorite(this.props.route.params.food);
+                                    }
+
+                                }
+                                
+                            }
+                            }
+                        >
                             <Icon
                                 name={'bookmark'}
                                 size={20}
@@ -89,22 +89,20 @@ export default class FoodDetail extends Component {
                 <Block  padding={[0,20]} style={bodyFoodDetail} >
                     <Block padding={[10,0]}  color={'white'} >
                         <Text  h1 >{name}</Text>
-                        <Text style={{marginVertical:5}} gray h3 >{adress}</Text>
+                        <Text style={{marginVertical:5}} gray h3 >{address}</Text>
                         <Block row >
                             <View style={boxFree} >
                                 <Text white > Free delivery</Text>
                             </View>
                         
                             
-                            <Text  style={{marginHorizontal:30}} >{range} km</Text>
-                            <Text    >{time} min</Text>
-
+                            <Text  style={{marginHorizontal:30}} > 3.2 km</Text>
                         </Block>
                     </Block>
-                    <ContainerFeedBack ratings={ratings}  bookmark={bookmark}  photo={photo}  />
+                    <ContainerFeedBack ratings={rating}  bookmark={bookmark}  photo={photo}  />
                     <Block  padding={[10,0]}  >
                         <Text>
-                            {depcription}
+                            {description}
                         </Text>
                     </Block>
                     <Block margin={[10,0]} >
@@ -129,11 +127,7 @@ export default class FoodDetail extends Component {
                                     source={img}
 
                                 />
-                                <Image
-                                    style={imgFoodDetail}
-                                    source={img}
-
-                                />
+             
                             </ScrollView>
 
                         </Block>
@@ -148,3 +142,10 @@ export default class FoodDetail extends Component {
         );
     }
 }
+const mapStateToProp=(state)=>{
+    return{
+        favorites:state.favorites
+    }
+}
+
+export default connect(mapStateToProp,{addFavorite})(FoodDetail);

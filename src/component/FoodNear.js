@@ -10,11 +10,13 @@ import styles from '../style/styles';
 
 import Rating from './Rating';
 export default class FoodNear extends Component {
-    renderItemFoodNear(){
+    renderItemFoodNear(item){
         const  {imgFoodNear,rowBetween}=styles;
+        const {_id,name,img,price,address,photo,rating,bookmark}=item;
         return(
             <TouchableOpacity
-                onPress={()=>this.props.navigation.navigate("FoodDetail")}
+                key={_id}
+                onPress={()=>this.props.navigation.navigate("FoodDetail",{food:item})}
             >
                     <Block   
                         row margin={[0,0]} 
@@ -28,12 +30,12 @@ export default class FoodNear extends Component {
                             />
                         <Block space={'around'} >
                             <View style={rowBetween}>
-                                <Text title bold >Name foood</Text>
-                                <Text title >33 $</Text>
+                                <Text title bold >{name}</Text>
+                                <Text title >{price} $</Text>
                             </View>
-                            <Text gray >adress</Text>
+                            <Text numberOfLines={1} gray >{address}</Text>
                             <Block  flex={0.2} row center  space={'between'} >
-                                <Rating  />
+                                <Rating  photo={photo} rating={rating}  bookmark={bookmark}  />
                             </Block>
                         </Block>
                     </Block>
@@ -44,7 +46,7 @@ export default class FoodNear extends Component {
 
      
     render() {
-        const  {imgFoodNear,itemFoodNear,boxFree,btnIcon,boxShowAll}=styles;
+        const  {boxFree,btnIcon,boxShowAll}=styles;
         return (
             <Block  flex={1}  margin={[10,15,0,0]}     >
                 <Block   row  space={'between'} >
@@ -61,10 +63,8 @@ export default class FoodNear extends Component {
 
                     </View>
                 </Block>
-                    
-               {this.renderItemFoodNear()}
-               {this.renderItemFoodNear()}
-               {this.renderItemFoodNear()}           
+                {this.props.nearFoods.map(e=>this.renderItemFoodNear(e) )}
+                     
             </Block>
             
         );

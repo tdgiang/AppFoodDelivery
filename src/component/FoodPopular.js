@@ -3,18 +3,21 @@ import { View,TouchableOpacity,ScrollView,Image  } from 'react-native';
 import {Block,Button,Text} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
-const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
 import Rating from './Rating';
 
 export default class FoodPopular extends Component {
+    constructor(props){
+        super(props)
+    }
+     renderItemFoodPopular(e){
+        const  {_id,name,price,address,img,photo,rating,bookmark}=e;  
 
-
-    rederItemFoodPopular(){
-        const  {imgFoodPopular,itemFoodPopular}=styles;
+        const {itemFoodPopular,imgFoodPopular}=styles;
         return(
             <TouchableOpacity
-                onPress={()=>this.props.navigation.navigate("FoodDetail")}
+                key={_id}
+                onPress={()=>this.props.navigation.navigate("FoodDetail",{food:e})}
             >
                 <View   style={itemFoodPopular} >
                             <Image
@@ -23,12 +26,12 @@ export default class FoodPopular extends Component {
                             resizeMode={'cover'}
                             />
                             <Block row  space={'between'}>
-                                <Text title bold >Name foood</Text>
-                                <Text title >33 $</Text>
+                                <Text title bold >{name}</Text>
+                                
                             </Block>
-                            
-                            <Text gray >adress</Text>
-                            <Rating /> 
+                                <Text  title >$ {price}</Text>
+                                <Text numberOfLines={1} gray >{address}</Text>
+                            <Rating photo={photo} rating={rating}  bookmark={bookmark}  /> 
                 </View>
             </TouchableOpacity>
             
@@ -36,21 +39,15 @@ export default class FoodPopular extends Component {
     }
      
     render() {
-        const  {imgFoodPopular,itemFoodPopular,boxFree}=styles;
         return (
             <Block  flex={1}       >
-                    <Text h1  bold >Nổi bật </Text>
+                    <Text h2  bold >Nổi bật </Text>
                     <ScrollView 
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                   
                     >
-                        {this.rederItemFoodPopular()}
-                        {this.rederItemFoodPopular()}
-                        {this.rederItemFoodPopular()}
-                        {this.rederItemFoodPopular()}
-                        
-                        
+                        {this.props.popularFoods.map(e=> this.renderItemFoodPopular(e)
+                        )}
                     </ScrollView>
                 </Block>
             
