@@ -51,6 +51,7 @@ class Favorite extends Component {
                     previewOpenValue={-40}
                     previewOpenDelay={3000}
                     keyExtractor={item=>item._id}
+                    showsVerticalScrollIndicator={false}
                 />   
             </Block>
            </Block>

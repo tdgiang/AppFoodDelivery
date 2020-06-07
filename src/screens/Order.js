@@ -2,106 +2,120 @@ import React, { Component } from 'react';
 import { View ,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import Header from '../component/Hearder';
+import {deleteOrder,increFoodOrder,decreFoodOrder} from '../redux/actionCreators';
+import { SwipeListView } from 'react-native-swipe-list-view';
+import {connect}  from 'react-redux';
+class Order extends Component {
+    constructor(props){
+        super(props);
+    }
+    
+    totalFood(){
+        let total=0;
+        this.props.orders.map(e=>{
+            total+=e.price*e.count;
+        })
+        return total;
+    }
+    totalDeliver(){
+        let total=0;
+        
+        return total;
+    }
 
-export default class Order extends Component {
-     
+
+    renderItem(item){
+        const {rowBetween,itemOrder}=styles
+        return(
+            <View  style={itemOrder}>
+                    <Block flex={3} padding={[0,10]}  >
+                        <Text numberOfLines={1} title bold>{item.name}</Text>
+                        <Text numberOfLines={1} gray1 >{item.nameStore}</Text>
+                        <Text gray1 numberOfLines={1} >{item.address}</Text>
+                    </Block>
+                    <Block flex={1} padding={[0,10]}   >
+                        <View style={rowBetween}>
+                                <TouchableOpacity
+                                    onPress={()=>this.props.increFoodOrder(item._id)}
+                                >
+                                    <Text  h2 >+</Text>
+                                </TouchableOpacity>
+                                <Text h3 style={{marginHorizontal:15}} >{item.count}</Text>
+                                <TouchableOpacity
+                                    onPress={()=>{
+                                        if(item.count==1)
+                                        {
+                                            this.props.deleteOrder(item._id)
+                                        }else
+                                            this.props.decreFoodOrder(item._id)
+                                    }}
+                                >
+                                    <Text bold h2 >-</Text>
+                                </TouchableOpacity>
+                        </View>
+                        <Text gray1 >Giá :{item.price}</Text>
+                        <Text gray1 >Ship :12000</Text>
+                    </Block>
+            </View>
+        )
+    }
+    renderHiddenItem = (item) => (
+        <View style={styles.rowSwipeOrder}>
+            <TouchableOpacity
+                style={[styles.backRightBtn, styles.backRightBtnRight]}
+                onPress={() => {
+                     this.props.deleteOrder(item._id);
+                }}
+            >
+                <Text white>Xóa</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
     render() {
-        const {btn,boxTotal,headerCollections,boxFree,headerOrder,rowBetween,containerOrder,itemOrder,btnTotal}=styles
+        const {boxTotal,containerOrder,btnTotal}=styles
         return (
             <Block   >
                 <Header nameTab={"My Order"} />
-                <Block  flex={3}  padding={[10,10]} >
-                    <View  style={containerOrder} >
-                        <View style={headerOrder} >
-                            <Text h1 >Name</Text>
-                            <View style={rowBetween}  >
-                                <Text   >adress</Text>
-                                <Text style={boxFree} >Free delivery</Text>
-                            </View>
-                        </View>
-                        <View  style={itemOrder}  >
-                            <View style={rowBetween} >
-                                <Text h3 >Ten mon</Text>
-                                <View style={rowBetween} >
-                                    <TouchableOpacity>
-                                        <Text  h2 >+</Text>
-                                    </TouchableOpacity>
-                                    <Text h3 style={{marginHorizontal:15}} >4</Text>
-                                    <TouchableOpacity>
-                                        <Text h2 >-</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View  style={rowBetween} >
-                                <Text gray >material</Text>
-                                <Text gray2 >$ 23</Text>
-                            </View>
-                        </View>
-                        <View  style={itemOrder}  >
-                            <View style={rowBetween} >
-                                <Text h3>Ten mon</Text>
-                                <View style={rowBetween} >
-                                    <TouchableOpacity>
-                                        <Text  h2 >+</Text>
-                                    </TouchableOpacity>
-                                    <Text h3 style={{marginHorizontal:15}} >4</Text>
-                                    <TouchableOpacity>
-                                        <Text h2 >-</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View  style={rowBetween} >
-                                <Text gray >material</Text>
-                                <Text gray2 >$ 23</Text>
-                            </View>
-                        </View>
-                        <View  style={itemOrder} >
-                            <View style={rowBetween} >
-                                <Text h3 >Ten mon</Text>
-                                <View style={rowBetween} >
-                                    <TouchableOpacity>
-                                        <Text  h2 >+</Text>
-                                    </TouchableOpacity>
-                                    <Text h3 style={{marginHorizontal:15}} >4</Text>
-                                    <TouchableOpacity>
-                                        <Text h2 >-</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View  style={rowBetween} >
-                                <Text gray >material</Text>
-                                <Text gray2 >$ 23</Text>
-                            </View>
-                        </View> 
-                        <View  style={{paddingHorizontal:20,paddingVertical:10}} >
-                            <TouchableOpacity>
-                                <Text  accent >Add more items</Text>
-                            </TouchableOpacity>
-                         </View>
-                        
+                <Block  flex={3}  padding={[10,10]}>
+                    <View  style={containerOrder}>
+                        <SwipeListView
+                            data={this.props.orders}
+                            renderItem={({item,index})=>this.renderItem(item,index)}
+                            renderHiddenItem={({item}) =>this.renderHiddenItem(item)}
+                            rightOpenValue={-75}
+                            previewRowKey={'0'}
+                            previewOpenValue={-40}
+                            previewOpenDelay={3000}
+                            keyExtractor={item=>item._id}
+                            showsVerticalScrollIndicator={false}
+                        />   
                     </View>
                    
-                   
-                    
 
                 </Block>
                 <Block  flex={1}   padding={[0,20]} color={'white'} >
                     <Block  padding={[10,0]} style={boxTotal} >
                         <Block row   space={'between'} >
-                            <Text>Subtotal</Text>
-                            <Text>$323</Text>
+                            <Text>Tổng tiền đồ ăn:</Text>
+                            <Text>{this.totalFood()}</Text>
                         </Block>
                         <Block  row  space={'between'}>
-                            <Text>Delivery</Text>
-                            <Text>$0</Text>
+                            <Text>Phí vẫn chuyển:</Text>
+                            <Text>{this.totalDeliver()}</Text>
                         </Block>
                     </Block>
                     <Button  color={'orange'} style={btnTotal}   >
-                                <Text />
-                                <Text white h3>Continue</Text>
-                                <Text white h3 >$323</Text>
+                                <Block />
+                                <Block center>
+                                    <Text  white h3>Continue</Text>
+                                </Block>
+                                <Block center >
+                                    <Text white title >{this.totalFood()+this.totalDeliver()} VND</Text>
+                                </Block>
+                                
+                                
                     </Button>
                 </Block>
             </Block>
@@ -109,3 +123,11 @@ export default class Order extends Component {
         );
     }
 }
+
+const mapStateToProp=(state)=>{
+    return{
+        orders:state.orders
+    }
+}
+
+export default connect(mapStateToProp,{deleteOrder,increFoodOrder,decreFoodOrder})(Order);

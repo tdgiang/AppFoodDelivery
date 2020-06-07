@@ -19,7 +19,6 @@ function* getFoodsFromAPI(){
 
 //Favorites
 function* getFavorite(){
-    console.log("This is func getFavorite from api");
     
     try {
         const jsonValue = yield AsyncStorage.getItem('@arrFavorite6')
@@ -29,10 +28,9 @@ function* getFavorite(){
       }
 }
 
-function* storageFavorite(arrFavorites){
-    yield console.log("This is func storageFavorite from api");
+function* storageFavorite(arrFavorite){
     try {
-        const jsonValue = JSON.stringify(arrFavorites);
+        const jsonValue = JSON.stringify(arrFavorite);
         yield AsyncStorage.setItem('@arrFavorite6', jsonValue);
         return true;
       } catch (e) {
@@ -40,6 +38,29 @@ function* storageFavorite(arrFavorites){
       }
 }
 
+//Order
+function* getOrder(){
+    try{
+        const jsonValue = yield AsyncStorage.getItem('@arrOrder2')
+        return jsonValue != null ? JSON.parse(jsonValue) : [];
+    }catch(e){
+        return [];
+    }
+    
+}
+function* storageOrder(arrOrder){
+    console.log("StorageOrder");
+    
+    try {
+        const jsonValue = JSON.stringify(arrOrder);
+        yield AsyncStorage.setItem('@arrOrder2', jsonValue);
+        return true;
+    } catch (error) {
+        return false;
+    }
+    
+
+}
 
 
 
@@ -48,5 +69,7 @@ function* storageFavorite(arrFavorites){
 export const api={
     getFoodsFromAPI,
     getFavorite,
-    storageFavorite
+    storageFavorite,
+    getOrder,
+    storageOrder
 }

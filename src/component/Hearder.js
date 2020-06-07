@@ -11,7 +11,7 @@ export default class Header extends Component {
                 <Block  flex={1} row space={'between'} center   padding={[0,20]} >
                     <View />
 
-                    <Text  h2>{this.props.nameTab}</Text>
+                    <Text bold h2>{this.props.nameTab}</Text>
                     <View />
 
 

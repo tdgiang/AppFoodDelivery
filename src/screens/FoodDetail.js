@@ -5,22 +5,16 @@ import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LinearGradient from 'react-native-linear-gradient';
 import {connect} from 'react-redux';
-const img=require('../constants/images/che/che01.jpg');
-import {addFavorite} from '../redux/actionCreators';
-
+import {addFavorite,addOrder} from '../redux/actionCreators';
 import ContainerFeedBack from '../component/ContainerFeedBack';
 
-
  class FoodDetail extends Component {
-     
     render() {
         const {boxSlideDetail,bodyFoodDetail,boxFree,headerFoodDetail,row,imgFoodDetail}=styles;
         const {_id,name,img,address,bookmark,photo,description,rating,nameStore}=this.props.route.params.food;
         return (
             <ScrollView
                showsVerticalScrollIndicator={false}
-                
-               
             >
                 <ImageBackground
                     style={boxSlideDetail}
@@ -69,22 +63,30 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
 
                             />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={()=>{
+                                if(this.props.orders==null){
+                                    this.props.addOrder(this.props.route.params.food);
+                                }else{
+                                    if(this.props.orders.find(item=>item._id===_id)){
+                                        alert("Đồ ăn này đã tồn tại trong mục giỏ hàng!");
+                                    }else{
+                                        this.props.addOrder(this.props.route.params.food);
+                                    }
+
+                                }
+                            }
+                            }
+                        >
                             <Icon
                                 name={'shopping-cart'}
                                 size={20}
                                 color={'white'}
-
                             />
                         </TouchableOpacity>
-
-
                         </View>
-
                     </View>
-
                     </LinearGradient>
-                    
                 </ImageBackground>
                 <Block  padding={[0,20]} style={bodyFoodDetail} >
                     <Block padding={[10,0]}  color={'white'} >
@@ -94,8 +96,6 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
                             <View style={boxFree} >
                                 <Text white > Free delivery</Text>
                             </View>
-                        
-                            
                             <Text  style={{marginHorizontal:30}} > 3.2 km</Text>
                         </Block>
                     </Block>
@@ -115,37 +115,29 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
                                 <Image
                                     style={imgFoodDetail}
                                     source={img}
-
                                 />
                                 <Image
                                     style={imgFoodDetail}
                                     source={img}
-
                                 />
                                 <Image
                                     style={imgFoodDetail}
                                     source={img}
-
                                 />
              
                             </ScrollView>
-
                         </Block>
-
-
                     </Block>
-
                 </Block>
-   
             </ScrollView>
-            
         );
     }
 }
 const mapStateToProp=(state)=>{
     return{
-        favorites:state.favorites
+        favorites:state.favorites,
+        orders:state.orders
     }
 }
 
-export default connect(mapStateToProp,{addFavorite})(FoodDetail);
+export default connect(mapStateToProp,{addFavorite,addOrder})(FoodDetail);

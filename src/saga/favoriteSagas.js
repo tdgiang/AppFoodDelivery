@@ -5,7 +5,6 @@ import {api}  from './api';
 function* getDataFavorite(){
     try {
         let arrFavorite=yield api.getFavorite();
-        yield console.log(arrFavorite);
         yield put({type:"GET_FAVORITE_SUCCEEDED",arrFavorite:arrFavorite});
     } catch (err) {
         yield put ({type:"GET_FAVORITE_FAILED",error})

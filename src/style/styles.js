@@ -143,11 +143,18 @@ const styles=StyleSheet.create({
         borderRadius:sizes.small
     },
     itemOrder:{
-        paddingVertical:10,
-        marginHorizontal:20,    
+        height:70,
+        flexDirection:'row',
+        backgroundColor:'white',
+        borderRadius:sizes.small,
         borderBottomWidth:1,
-        borderBottomColor:colors.gray4,
-        justifyContent:'space-around',
+        borderBottomColor:colors.gray3
+
+    },
+    rowSwipeOrder:{
+        height:70,
+        borderBottomWidth:1,
+        borderBottomColor:colors.gray3
     },
     btnTotal:{
         flexDirection:'row',
@@ -224,6 +231,10 @@ const styles=StyleSheet.create({
         right:0,
         backgroundColor:colors.gray4,
         position:"absolute",  
+    },
+    hr1:{
+        height:1,
+        backgroundColor:colors.gray4,
     },
     itemCollection:{
         width:(width/2)-30,
