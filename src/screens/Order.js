@@ -106,16 +106,19 @@ class Order extends Component {
                             <Text>{this.totalDeliver()}</Text>
                         </Block>
                     </Block>
-                    <Button  color={'orange'} style={btnTotal}   >
-                                <Block />
-                                <Block center>
-                                    <Text  white h3>Continue</Text>
-                                </Block>
-                                <Block center >
-                                    <Text white title >{this.totalFood()+this.totalDeliver()} VND</Text>
-                                </Block>
-                                
-                                
+                    <Button  
+                        color={'orange'} 
+                        style={btnTotal}  
+                        onPress={()=>console.log(this.props.navigation.navigate("ConfirmOrder"))
+                        }
+                    >
+                        <Block />
+                        <Block center>
+                            <Text  white h3>Continue</Text>
+                        </Block>
+                        <Block center >
+                            <Text white title >{this.totalFood()+this.totalDeliver()} VND</Text>
+                        </Block>
                     </Button>
                 </Block>
             </Block>

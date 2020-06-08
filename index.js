@@ -8,4 +8,5 @@ import {name as appName} from './app.json';
  
 import app from './src/app';
 import index from './src/screens/index';
-AppRegistry.registerComponent(appName, () => app);
+import ConfirmOrder from './src/screens/ConfirmOrder';
+AppRegistry.registerComponent(appName, () => ConfirmOrder);

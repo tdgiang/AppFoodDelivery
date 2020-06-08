@@ -2,13 +2,10 @@ import  React,{Component} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import FoodDetail from '../screens/FoodDetail';
-import Favorite from '../screens/Favorite';
-
+import Order from '../screens/Order';
+import ConfirmOrder from '../screens/ConfirmOrder';
 const Stack = createStackNavigator();
-
-export default class FavoriteStack extends Component {
-
+export default class OrderStack extends Component {
     _settingOption(){
         return{
             title:"",
@@ -34,19 +31,17 @@ export default class FavoriteStack extends Component {
     render() {
         return (
             <NavigationContainer  independent={true} >
-                <Stack.Navigator initialRouteName="Favorite">
+                <Stack.Navigator initialRouteName="Order">
                     <Stack.Screen 
-                        name="Favorite" 
-                        component={Favorite} 
+                        name="Order" 
+                        component={Order} 
                         options={this._settingOptionBack()}
                     />
                     <Stack.Screen 
-                        name="FoodDetail" 
-                        component={FoodDetail} 
-                        options={this._settingOption()}
+                        name="ConfirmOrder" 
+                        component={ConfirmOrder} 
+                        
                     />
-                    
-                  
                 </Stack.Navigator>
             </NavigationContainer>
             

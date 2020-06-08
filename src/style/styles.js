@@ -352,7 +352,14 @@ const styles=StyleSheet.create({
         borderBottomRightRadius:sizes.small
        
     },
-    
+    stepBtn:{
+        color:'white',
+        width:100,
+        paddingVertical:10,
+        backgroundColor:colors.orange,
+        textAlign:'center',
+        borderRadius:sizes.small
+    }
 
 
 
