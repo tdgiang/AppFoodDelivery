@@ -26,7 +26,7 @@ class Order extends Component {
 
 
     renderItem(item){
-        const {rowBetween,itemOrder}=styles
+        const {rowBetween,itemOrder}=styles; 
         return(
             <View  style={itemOrder}>
                     <Block flex={3} padding={[0,10]}  >
@@ -76,7 +76,7 @@ class Order extends Component {
     render() {
         const {boxTotal,containerOrder,btnTotal}=styles
         return (
-            <Block   >
+            <Block    >
                 <Header nameTab={"My Order"} />
                 <Block  flex={3}  padding={[10,10]}>
                     <View  style={containerOrder}>
@@ -98,26 +98,26 @@ class Order extends Component {
                 <Block  flex={1}   padding={[0,20]} color={'white'} >
                     <Block  padding={[10,0]} style={boxTotal} >
                         <Block row   space={'between'} >
-                            <Text>Tổng tiền đồ ăn:</Text>
-                            <Text>{this.totalFood()}</Text>
+                            <Text title >Tổng tiền đồ ăn:</Text>
+                            <Text title >{this.totalFood()}</Text>
                         </Block>
                         <Block  row  space={'between'}>
-                            <Text>Phí vẫn chuyển:</Text>
-                            <Text>{this.totalDeliver()}</Text>
+                            <Text  title>Phí vẫn chuyển:</Text>
+                            <Text title >{this.totalDeliver()}</Text>
                         </Block>
                     </Block>
                     <Button  
                         color={'orange'} 
                         style={btnTotal}  
-                        onPress={()=>console.log(this.props.navigation.navigate("ConfirmOrder"))
+                        onPress={()=>this.props.navigation.navigate("ConfirmOrder")
                         }
                     >
                         <Block />
                         <Block center>
-                            <Text  white h3>Continue</Text>
+                            <Text  white h3>Tiếp tục</Text>
                         </Block>
                         <Block center >
-                            <Text white title >{this.totalFood()+this.totalDeliver()} VND</Text>
+                            <Text white title >đ {this.totalFood()+this.totalDeliver()}</Text>
                         </Block>
                     </Button>
                 </Block>

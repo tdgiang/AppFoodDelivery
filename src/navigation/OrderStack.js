@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Order from '../screens/Order';
 import ConfirmOrder from '../screens/ConfirmOrder';
+import DeliveryProgress from '../screens/DeliveryProgress';
 const Stack = createStackNavigator();
 export default class OrderStack extends Component {
     _settingOption(){
@@ -40,7 +41,12 @@ export default class OrderStack extends Component {
                     <Stack.Screen 
                         name="ConfirmOrder" 
                         component={ConfirmOrder} 
-                        
+                        options={this._settingOption()}
+                    />
+                    <Stack.Screen 
+                        name="DeliveryProgress" 
+                        component={DeliveryProgress} 
+                        options={this._settingOption()}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

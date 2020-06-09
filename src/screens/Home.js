@@ -42,7 +42,6 @@ class Home extends Component {
                 <CollectionFood navigation={this.props.navigation}   />
 
                 <Block>
-                    <Text>Hello</Text>
                     {this.props.foods.slice(0,10).map(e=>{
                       return(
                         <View>

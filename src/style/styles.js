@@ -143,23 +143,25 @@ const styles=StyleSheet.create({
         borderRadius:sizes.small
     },
     itemOrder:{
-        height:70,
+        height:80,
         flexDirection:'row',
         backgroundColor:'white',
         borderRadius:sizes.small,
         borderBottomWidth:1,
-        borderBottomColor:colors.gray3
+        borderBottomColor:colors.gray3,
+        paddingVertical:5
 
     },
     rowSwipeOrder:{
-        height:70,
+        height:80,
         borderBottomWidth:1,
         borderBottomColor:colors.gray3
     },
     btnTotal:{
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'space-around'
+        justifyContent:'space-around',
+        backgroundColor:colors.orange
     },
     iconBookmark:{   
         position:'absolute',
@@ -233,8 +235,10 @@ const styles=StyleSheet.create({
         position:"absolute",  
     },
     hr1:{
+        marginVertical:10,
         height:1,
         backgroundColor:colors.gray4,
+        
     },
     itemCollection:{
         width:(width/2)-30,
@@ -355,11 +359,50 @@ const styles=StyleSheet.create({
     stepBtn:{
         color:'white',
         width:100,
-        paddingVertical:10,
+        paddingVertical:5,
         backgroundColor:colors.orange,
         textAlign:'center',
-        borderRadius:sizes.small
-    }
+        borderRadius:sizes.small,
+        marginTop:20
+    },
+   
+  stepLabel: {
+    fontSize: 12,
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#999999'
+  },
+  stepLabelSelected: {
+    fontSize: 12,
+    textAlign: 'center',
+    fontWeight: '500',
+    color: '#4aae4f'
+  },
+  footerDelivery:{
+      width,
+      height:120,
+      backgroundColor:'rgba(0,0,0,0.8)',
+      position:'absolute',
+      bottom:0,
+      paddingBottom:10
+  },
+  boxDelivery:{
+      borderRightWidth:2,
+      borderBottomWidth:2,
+      borderColor:'#000000'
+  },
+  borderDashed:{
+    borderWidth:2,
+    borderStyle:'dashed',
+    borderColor:colors.orange,
+    borderRadius:sizes.small,
+    padding:5,
+    marginBottom:5
+  },
+  bodyDelivery:{
+      borderRadius:sizes.small,
+      elevation:3,
+  }
 
 
 

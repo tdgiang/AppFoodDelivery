@@ -5,9 +5,10 @@ import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import AddressOrder from './AddressOrder';
-
+import DetailOrder from './DetailOrder';
 import CheckBox from 'react-native-check-box'
 
+var orange="#FF8C00"
 
 export default class ConfirmOrder extends Component {
     constructor(props){
@@ -22,7 +23,13 @@ export default class ConfirmOrder extends Component {
         const {stepBtn,hr1}=styles;
         return (
             <Block  color={'white'}>
-                <ProgressSteps>
+                <ProgressSteps
+                    activeStepIconBorderColor={orange}
+                    completedProgressBarColor={orange}
+                    completedStepIconColor={orange}
+                    activeLabelColor={orange}
+                    removeBtnRow={true}
+                >
                     <ProgressStep 
                         label="Địa chỉ" 
                         nextBtnText={"Tiếp theo"}
@@ -92,11 +99,9 @@ export default class ConfirmOrder extends Component {
                         previousBtnText={"Quay lại"}
                         nextBtnTextStyle={stepBtn} 
                         previousBtnTextStyle={stepBtn}
-                        onSubmit={()=>console.log("Xac nhan don hang")}
+                        onSubmit={()=>this.props.navigation.navigate("DeliveryProgress")}
                     >
-                        <View style={{ alignItems: 'center' }}>
-                            <Text>This is the content within step 3!</Text>
-                        </View>
+                        <DetailOrder   />
                     </ProgressStep>
                 </ProgressSteps>
             </Block>

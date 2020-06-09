@@ -8,7 +8,7 @@ export default class Header extends Component {
             
             return (
                 <View  style={styles.headerCollections} >
-                <Block  flex={1} row space={'between'} center   padding={[0,20]} >
+                <Block  flex={1} row space={'between'} center color={'white'}   padding={[0,20]} >
                     <View />
 
                     <Text bold h2>{this.props.nameTab}</Text>
