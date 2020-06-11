@@ -41,7 +41,7 @@ function* storageFavorite(arrFavorite){
 //Order
 function* getOrder(){
     try{
-        const jsonValue = yield AsyncStorage.getItem('@arrOrder2')
+        const jsonValue = yield AsyncStorage.getItem('@arrOrder6')
         return jsonValue != null ? JSON.parse(jsonValue) : [];
     }catch(e){
         return [];
@@ -53,7 +53,7 @@ function* storageOrder(arrOrder){
     
     try {
         const jsonValue = JSON.stringify(arrOrder);
-        yield AsyncStorage.setItem('@arrOrder2', jsonValue);
+        yield AsyncStorage.setItem('@arrOrder6', jsonValue);
         return true;
     } catch (error) {
         return false;

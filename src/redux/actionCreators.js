@@ -18,8 +18,6 @@ export const fetchFailed=()=>{
     }
 }
 
-
-
 //Favorites
 export const getFavorite=()=>{
     return{
@@ -126,4 +124,5 @@ export const decreFoodOrder=(idFood)=>{
         idFood
     }
 }
+
 

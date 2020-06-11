@@ -7,10 +7,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import AddressOrder from './AddressOrder';
 import DetailOrder from './DetailOrder';
 import CheckBox from 'react-native-check-box'
+import {connect}  from 'react-redux';
+import {addAddressInBill,addPayMethodInBill}  from '../redux/action/actionBill';
 
 var orange="#FF8C00"
 
-export default class ConfirmOrder extends Component {
+ class ConfirmOrder extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -33,7 +35,8 @@ export default class ConfirmOrder extends Component {
                     <ProgressStep 
                         label="Địa chỉ" 
                         nextBtnText={"Tiếp theo"}
-                        nextBtnTextStyle={stepBtn}  
+                        nextBtnTextStyle={stepBtn} 
+                        onNext={()=>this.props.addAddressInBill(this.props.user)}
                     >
                         <AddressOrder  />
                     </ProgressStep>
@@ -43,6 +46,7 @@ export default class ConfirmOrder extends Component {
                         previousBtnText={"Quay lại"}
                         nextBtnTextStyle={stepBtn} 
                         previousBtnTextStyle={stepBtn}
+                        onNext={()=>this.props.addPayMethodInBill(this.state.isCartChecked)}
                     >
                         <Block >
                             <View style={hr1}/>
@@ -99,12 +103,23 @@ export default class ConfirmOrder extends Component {
                         previousBtnText={"Quay lại"}
                         nextBtnTextStyle={stepBtn} 
                         previousBtnTextStyle={stepBtn}
-                        onSubmit={()=>this.props.navigation.navigate("DeliveryProgress")}
+                        onSubmit={()=>{
+                           // this.props.navigation.navigate("DeliveryProgress")
+                        }}
                     >
-                        <DetailOrder   />
+                        <DetailOrder  bill={this.props.bill}  />
                     </ProgressStep>
                 </ProgressSteps>
             </Block>
         );
     }
 }
+
+const mapStateToProps=(state)=>{
+    return{
+        user:state.user,
+        bill:state.bill
+    }
+}
+
+export default connect(mapStateToProps,{addAddressInBill,addPayMethodInBill})(ConfirmOrder);

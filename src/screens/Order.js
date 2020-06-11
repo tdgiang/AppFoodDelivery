@@ -4,6 +4,7 @@ import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Header from '../component/Hearder';
 import {deleteOrder,increFoodOrder,decreFoodOrder} from '../redux/actionCreators';
+import {addOrderInBill}  from '../redux/action/actionBill';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import {connect}  from 'react-redux';
 class Order extends Component {
@@ -82,13 +83,13 @@ class Order extends Component {
                     <View  style={containerOrder}>
                         <SwipeListView
                             data={this.props.orders}
-                            renderItem={({item,index})=>this.renderItem(item,index)}
+                            renderItem={({item})=>this.renderItem(item)}
                             renderHiddenItem={({item}) =>this.renderHiddenItem(item)}
                             rightOpenValue={-75}
                             previewRowKey={'0'}
                             previewOpenValue={-40}
-                            previewOpenDelay={3000}
                             keyExtractor={item=>item._id}
+                            previewOpenDelay={3000}
                             showsVerticalScrollIndicator={false}
                         />   
                     </View>
@@ -109,7 +110,10 @@ class Order extends Component {
                     <Button  
                         color={'orange'} 
                         style={btnTotal}  
-                        onPress={()=>this.props.navigation.navigate("ConfirmOrder")
+                        onPress={()=>{
+                            this.props.addOrderInBill(this.props.addOrderInBill({foodOrder:this.props.orders,totalBill:this.totalFood()+this.totalDeliver()}))
+                            this.props.navigation.navigate("ConfirmOrder")
+                        }
                         }
                     >
                         <Block />
@@ -133,4 +137,4 @@ const mapStateToProp=(state)=>{
     }
 }
 
-export default connect(mapStateToProp,{deleteOrder,increFoodOrder,decreFoodOrder})(Order);
+export default connect(mapStateToProp,{deleteOrder,increFoodOrder,decreFoodOrder,addOrderInBill})(Order);

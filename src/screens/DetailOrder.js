@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Image, View,TouchableOpacity,ScrollView} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
-
 const img=require('../constants/images/collections/1590376056346-douong.jpg')
 export default class DetailOrder extends Component {
     constructor(props){
@@ -16,9 +15,11 @@ export default class DetailOrder extends Component {
             isModalVisible:!this.state.isModalVisible
         })
     }
-
     render() {
         const {hr1,btnTotal,imgFoodNear}=styles
+       const {address,dataOrder,payMethod}=this.props.bill;
+       const arrAddress=address.address.split(',');
+        
         return (
             <ScrollView  showsVerticalScrollIndicator={false}   >
                 <View  style={hr1} />
@@ -26,7 +27,7 @@ export default class DetailOrder extends Component {
                     <Text bold h2>Thông tin này đã chính xác ?</Text>
                 </Block>
                 <View  style={hr1} />
-                <Block padding={[10,20]} margin={[10,0]}  >
+                <Block padding={[10,20]} margin={[5,0]}  >
                     <Block row  space={'between'}  >
                         <Text bold h3 >Địa chỉ nhận hàng</Text>
                         <TouchableOpacity>
@@ -34,34 +35,31 @@ export default class DetailOrder extends Component {
                         </TouchableOpacity>
                     </Block>
                     <Block row  space={'between'}  >
-                        <Text title >Trần Đức Giang</Text>
-                        <Text title>0866912436</Text>
+                        <Text title >{address.name}</Text>
+                        <Text title>{address.sdt}</Text>
                         
                     </Block>
-                <Text >Số 69 Trâu quỳ</Text>
-                <Text >Thị trấn trâu quỳ</Text>
-                <Text >Huyện Gia Lâm</Text>
-                <Text >TP.Hà Nội</Text>
+                    {arrAddress.map(e=><Text key={e} >{e}</Text>)}
                </Block>
                <View  style={hr1} />
-                    <Block  padding={[10,20]}>
+                    <Block  padding={[5,20]}>
                         <Block row  space={'between'}   >
-                            <Text bold h3 >Địa chỉ nhận hàng</Text>
+                            <Text bold h3 >Hình thức thanh toán</Text>
                             <TouchableOpacity>
                                 <Text orange title >Nhấn để thay đổi</Text>
                             </TouchableOpacity>
                         
                         </Block>
-                        <Text>Thanh toán khi nhận hàng</Text>
+                        {payMethod?(<Text accent title>Thanh toán bằng thẻ</Text>):(<Text accent title>Thanh toán khi nhận hàng</Text>)}
                     </Block>
                <View style={hr1} />
-               <Block   margin={[20,0,0,0]}>
+               <Block   margin={[10,0,0,0]}>
                <View style={hr1} />
-                    <Block padding={[10,20]} >
+                    <Block padding={[5,20]} >
                         <Block row  space={'between'}   >
-                            <Text bold h3 >Thành tiền</Text>
+                            <Text bold h3 >Thành tiền:</Text>
                             <TouchableOpacity>
-                                <Text orange title bold >đ 1.321.000</Text>
+                                <Text orange title bold >đ {dataOrder.totalBill}</Text>
                             </TouchableOpacity>
                         
                         </Block>
@@ -72,38 +70,23 @@ export default class DetailOrder extends Component {
                     <Text bold h2 >Danh sách đơn hàng</Text>
                 </Block>
                 <View style={hr1} />
-                <Block row padding={[10,20]} >
-                    <Image style={imgFoodNear}  source={img} />
+                {dataOrder.foodOrder.map(e=>(
+                    <Block key={e._id} >
+                        <Block row padding={[10,20]} >
+                    <Image style={imgFoodNear}  source={e.img} />
                     <Block  margin={[0,10]} space={'around'} >
-                        <Text title >Trà sữa chân châu</Text>
-                        <Text>đ 36.000</Text>
-                        <Text>SL:1</Text>
+                        <Text title >{e.name}</Text>
+                        <Text>đ {e.price}</Text>
+                        <Text>SL:{e.count}</Text>
                     </Block>
-                </Block>
-                <View style={hr1} />
-                <Block row padding={[10,20]} >
-                    <Image style={imgFoodNear}  source={img} />
-                    <Block  margin={[0,10]} space={'around'} >
-                        <Text title >Trà sữa chân châu</Text>
-                        <Text>đ 36.000</Text>
-                        <Text>SL:1</Text>
                     </Block>
-                </Block>
-                <View style={hr1} />
-                <Block row padding={[10,20]} >
-                    <Image style={imgFoodNear}  source={img} />
-                    <Block  margin={[0,10]} space={'around'} >
-                        <Text title >Trà sữa chân châu</Text>
-                        <Text>đ 36.000</Text>
-                        <Text>SL:1</Text>
+                    <View style={hr1} />
                     </Block>
-                </Block>
-                <View style={hr1} />
-                
-
-                <Block margin={[20,0]} />
+                ))}
+               
             </ScrollView>
            
         );
     }
 }
+

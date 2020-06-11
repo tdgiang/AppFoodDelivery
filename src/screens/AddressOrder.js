@@ -3,9 +3,9 @@ import {TextInput, View,Keyboard } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Modal from 'react-native-modal';
+import {connect} from 'react-redux';
 
-
-export default class AddressOrder extends Component {
+class AddressOrder extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -20,21 +20,20 @@ export default class AddressOrder extends Component {
 
     render() {
         const {hr1,btnTotal,rowBetween}=styles
+        const {name,address,sdt}=this.props.user;
+        const arrAddress=address.split(',');
+
         return (
             <Block color={'white'} >
                 <View  style={hr1} />
                 <Block padding={[10,20]} margin={[10,0]}  >
                     <Block row  space={'between'}  >
-                        <Text bold h2 >Trần Đức Giang</Text>
+                    <Text bold h2 >{name}</Text>
                         <Text gray title >[Mặc định]</Text>
                     </Block>
-                <Text title>0866912436</Text>
-                <Text title>Số 69 Trâu quỳ</Text>
-                <Text title>Thị trấn trâu quỳ</Text>
-                <Text title>Huyện Gia Lâm</Text>
-                <Text title>TP.Hà Nội</Text>
+                <Text title>{sdt}</Text>
+                {arrAddress.map(e=><Text key={e} >{e}</Text>)}
                </Block>
-               
                <View  style={hr1} />
                 <Block padding={[0,20]}   >
                     <Button onPress={this.toggleModal.bind(this)} >
@@ -117,3 +116,11 @@ export default class AddressOrder extends Component {
         );
     }
 }
+
+const mapStateToProps=(state)=>{
+    return{
+        user:state.user
+    }
+}
+
+export default connect(mapStateToProps)(AddressOrder)

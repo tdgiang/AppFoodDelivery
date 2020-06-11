@@ -17,6 +17,7 @@ class Welcome extends Component {
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
+        
         return (
                  
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>
@@ -63,7 +64,8 @@ class Welcome extends Component {
 
 const mapStateToProps=(state)=>{
     return {
-        favorites:state.favorites
+        favorites:state.favorites,
+        orders:state.orders
     }
   }
 

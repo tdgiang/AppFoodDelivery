@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from '../style/styles';
 const avatar =require('../constants/images/avatar.jpg');
 import ProfileItem from '../component/ProfileItem';
+import {connect}  from 'react-redux';
 
 const arrItemclient=[
     {
@@ -48,7 +49,7 @@ const arrItemApp=[
 
     }
 ]
-export default class Profile extends Component {
+class Profile extends Component {
      
     render() {
         const {imgAvatar,row ,boxMember,boxItem,hr}=styles;
@@ -57,14 +58,14 @@ export default class Profile extends Component {
                <Block  flex={1}     center row  padding={[20,20]} >
                    <Block flex={2}  >
                         <Image
-                                source={avatar}
+                                source={this.props.user.img}
                                 style={imgAvatar}
                                 resizeMode={'cover'}
                         />
                     </Block>
                     <Block  flex={2}    >
                         <View  style={row } >
-                                <Text h2   >Your Name</Text>
+                                <Text h2   >{this.props.user.name}</Text>
                                 < TouchableOpacity>
                                     <Icon
                                         name={"chevron-right"}
@@ -115,3 +116,13 @@ export default class Profile extends Component {
         );
     }
 }
+const mapStateToProps=(state)=>{
+    return{
+        user:state.user
+    } 
+}
+
+ 
+
+
+export default  connect(mapStateToProps)(Profile);
