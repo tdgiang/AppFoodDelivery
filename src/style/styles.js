@@ -190,8 +190,7 @@ const styles=StyleSheet.create({
         elevation:sizes.small,
         borderRadius:sizes.small,
         marginVertical:sizes.small*2,
-        height:130
-         
+        height:130,
     },
     imgAvatar:{
         width:140,
@@ -402,7 +401,40 @@ const styles=StyleSheet.create({
   bodyDelivery:{
       borderRadius:sizes.small,
       elevation:3,
-  }
+  },
+  txtFreeShip:{
+      paddingVertical:4,
+      color:'white',
+      paddingHorizontal:10,
+      backgroundColor:colors.orange,
+      textAlign:'center',
+      borderRadius:sizes.small*2
+        
+  },
+  boxBack:{
+      justifyContent:'center',
+      alignItems:'center',
+      margin:10,
+      position:'absolute',
+      width:50,height:40,
+      backgroundColor:'red',
+      top:0,
+      zIndex:1,
+      backgroundColor:'rgba(255, 255, 255, 0.7)',
+      borderRadius:sizes.small
+    
+    },
+    containerItemSearch:{
+        borderRadius:sizes.small*2,
+        elevation:3,
+        borderLeftWidth:2,
+        borderLeftColor:colors.gray4,
+        borderRightWidth:2,
+        borderRightColor:colors.gray4,
+        padding:10,
+        backgroundColor:colors.white,
+        marginVertical:10
+    }
 
 
 

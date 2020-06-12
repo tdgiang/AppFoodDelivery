@@ -9,6 +9,7 @@ import DetailOrder from './DetailOrder';
 import CheckBox from 'react-native-check-box'
 import {connect}  from 'react-redux';
 import {addAddressInBill,addPayMethodInBill}  from '../redux/action/actionBill';
+import {clearOrder} from '../redux/actionCreators';
 
 var orange="#FF8C00"
 
@@ -104,7 +105,8 @@ var orange="#FF8C00"
                         nextBtnTextStyle={stepBtn} 
                         previousBtnTextStyle={stepBtn}
                         onSubmit={()=>{
-                           // this.props.navigation.navigate("DeliveryProgress")
+                            this.props.clearOrder();
+                            this.props.navigation.navigate("DeliveryProgress",{bill:this.props.bill});
                         }}
                     >
                         <DetailOrder  bill={this.props.bill}  />
@@ -122,4 +124,4 @@ const mapStateToProps=(state)=>{
     }
 }
 
-export default connect(mapStateToProps,{addAddressInBill,addPayMethodInBill})(ConfirmOrder);
+export default connect(mapStateToProps,{addAddressInBill,addPayMethodInBill,clearOrder})(ConfirmOrder);

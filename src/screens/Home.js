@@ -25,6 +25,7 @@ class Home extends Component {
               >
                 <Block row   center style={{height:55}}  margin={[10,0,0,0]}  >
                   <TextInput
+                    onFocus={()=>this.props.navigation.navigate('Search')}
                     placeholder={'Search'}
                     style={txtInputHome}
                   />

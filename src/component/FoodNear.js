@@ -53,10 +53,12 @@ export default class FoodNear extends Component {
                     <Text h2 bold >Gần đây </Text>
                     <View  style={boxShowAll}>
                         <Text>Show all</Text>
-                         <TouchableOpacity>
+                         <TouchableOpacity 
+                            onPress={()=>this.props.navigation.navigate("NearFood")}
+                         >
                             <Icon
                                     name={"caret-right"}
-                                    size={20}
+                                    size={25}
                                     style={btnIcon}
                             />
                          </TouchableOpacity>

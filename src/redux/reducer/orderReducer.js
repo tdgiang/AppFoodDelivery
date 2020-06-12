@@ -34,6 +34,10 @@ const orderReducer=(orders=[],action)=>{
                                 }
                         }
                 });
+        case "CLEAR_ORDER":
+                return [];
+        case "CLEAR_ORDER_FAILED":
+                return [];
         default:
                return orders;
     }

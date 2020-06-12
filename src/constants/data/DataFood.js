@@ -107,7 +107,7 @@ const DataFood=[
             favorite: false,
             popular: false,
             near: false,
-            _id: "5ecf7e43e138071154f8bae7",
+            _id: "5ecf7e43e138071154f8bae72",
             name: "Khoai Tây Chiên",
             nameStore: "",
             price: 60000,

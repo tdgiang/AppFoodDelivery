@@ -49,7 +49,6 @@ function* getOrder(){
     
 }
 function* storageOrder(arrOrder){
-    console.log("StorageOrder");
     
     try {
         const jsonValue = JSON.stringify(arrOrder);

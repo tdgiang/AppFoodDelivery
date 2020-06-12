@@ -95,9 +95,39 @@ export default class DeliveryProgress extends Component {
       </View>
     )
   }
+  renderPayMethod=(payMethod)=>{
+    if(payMethod){
+      return(
+        <Block  row  center>
+                  <Icon
+                    name={'credit-card'}
+                    color={'#0AC4BA'}
+                    size={20}
+                    style={{marginHorizontal:10}}
+                  />
+                  <Text title  primary >Đã thanh toán bằng thẻ</Text>
+                </Block>
+      )
+    }else{
+      return(
+        <Block  row  center>
+                  <Icon
+                    name={'hand-holding-usd'}
+                    color={'#0AC4BA'}
+                    size={20}
+                    style={{marginHorizontal:10}}
+                  />
+                  <Text title  primary >Thanh toán khi  lấy hàng</Text>
+                </Block>
+
+      )
+    }
+  }
 
   render () {
     const {footerDelivery,boxDelivery,btnTotal,hr1,borderDashed,bodyDelivery}=styles;
+    const {dataOrder,payMethod}=this.props.route.params.bill;
+   
     return (
       <Block flex={1}>
         <View style={{margin:10}}  >
@@ -134,71 +164,38 @@ export default class DeliveryProgress extends Component {
 
                     </Block>
                   </Block>
-                  <Block row  >
-                    <Block flex={4}  >
-                        <Text title  >Chè trúc bạch</Text>
-
+                  {dataOrder.foodOrder.map(e=>(
+                      <Block row  key={e._id} >
+                        <Block flex={4}  >
+                            <Text title  >{e.name}</Text>
+    
+                        </Block>
+                        <Block flex={1}  >
+                          <Text title accent>{e.count}</Text>
+                        </Block>
+                        <Block  flex={2}  center >
+                          <Text title >{e.count*e.price}</Text>
+    
+                        </Block>
                     </Block>
-                    <Block flex={1}  >
-                      <Text title accent>1</Text>
-                    </Block>
-                    <Block  flex={2}  center >
-                      <Text title >35000 đ</Text>
-
-                    </Block>
-
-                  </Block>
-                  <Block row  >
-                    <Block flex={4}  >
-                        <Text title  >Chè trúc bạch</Text>
-
-                    </Block>
-                    <Block flex={1}  >
-                      <Text title accent>1</Text>
-                    </Block>
-                    <Block  flex={2}  center >
-                      <Text title >35000 đ</Text>
-
-                    </Block>
-
-                  </Block>
-                  <Block row  >
-                    <Block flex={4}  >
-                        <Text title  >Chè trúc bạch</Text>
-
-                    </Block>
-                    <Block flex={1}  >
-                      <Text title accent>1</Text>
-                    </Block>
-                    <Block  flex={2}   center >
-                      <Text title   >35000 đ</Text>
-
-                    </Block>
-                </Block>
+                  )
+                  )}
                 </Block>
                
                 <Block  row space={'between'} >
                   <Text title bold >Phí đồ ăn</Text>
-                  <Text title   bold >120000 đ</Text>
+                  <Text title   bold >{dataOrder.totalBill} đ</Text>
                 </Block>
                 <Block  row space={'between'} >
                   <Text title bold >Phí dich vụ</Text>
-                  <Text title   bold >40000 đ</Text>
+                  <Text title   bold >0 đ</Text>
                 </Block>
                 <Block  row space={'between'} >
                   <Text title bold >Tổng đơn hàng</Text>
-                  <Text title accent  bold >160000 đ</Text>
+                  <Text title accent  bold >{dataOrder.totalBill} đ</Text>
                 </Block>
                 <View  style={hr1} />
-                <Block  row  center>
-                  <Icon
-                    name={'hand-holding-usd'}
-                    color={'#0AC4BA'}
-                    size={20}
-                    style={{marginHorizontal:10}}
-                  />
-                  <Text title  primary >Thanh toán khi lấy hàng</Text>
-                </Block>
+                  {this.renderPayMethod(payMethod)}
               </Block>
           </ScrollView>
 

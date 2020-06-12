@@ -20,7 +20,7 @@ import DataCollection from '../constants/data/DataCollection';
                          >
                             <Icon
                                     name={"caret-right"}
-                                    size={20}
+                                    size={25}
                                     style={btnIcon}
                             />
                          </TouchableOpacity>

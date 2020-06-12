@@ -6,6 +6,7 @@ import FoodDetail from '../screens/FoodDetail';
 import NearFood from '../screens/NearFood';
 import Collections from '../screens/Collections';
 import CollectionDetail from '../screens/CollectionDetail';
+import Search from '../screens/Search';
 import Home from '../screens/Home';
 
 const Stack = createStackNavigator();
@@ -23,16 +24,9 @@ export default class index extends Component {
             
         }
     }
-    _settingOptionBack(){
-        return{
-            title:"",
-            headerStyle: {  
-                 height:0,
-              
-              }
-            
-        }
-    }
+    
+
+
 
     render() {
         return (
@@ -41,7 +35,7 @@ export default class index extends Component {
                     <Stack.Screen 
                         name="Home" 
                         component={Home} 
-                        options={this._settingOptionBack()}
+                        options={this._settingOption()}
                     />
                     <Stack.Screen 
                         name="FoodDetail" 
@@ -50,7 +44,7 @@ export default class index extends Component {
                     />
                     <Stack.Screen 
                         name="NearFood" 
-                        component={NearFood} 
+                        component={NearFood}
                         options={this._settingOption()}
                     />
                      <Stack.Screen 
@@ -61,6 +55,11 @@ export default class index extends Component {
                      <Stack.Screen 
                         name="CollectionDetail" 
                         component={CollectionDetail} 
+                        options={this._settingOption()}
+                    />
+                     <Stack.Screen 
+                        name="Search" 
+                        component={Search} 
                         options={this._settingOption()}
                     />
                     

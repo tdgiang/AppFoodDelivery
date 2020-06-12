@@ -47,4 +47,16 @@ function* deleteOrder(action){
 export function* watchDeleteOrder(){
     yield takeLatest("DELETE_ORDER",deleteOrder);
 }
+function* clearOrder(){
+    try {
+        console.log("This is clearORder saga");
+        yield result=api.storageOrder([]);
+    } catch (err) {
+        yield put ({type:"CLEAR_ORDER_FAILED"})
+    }
+}
+
+export function* watchClearOrder(){
+    yield takeLatest("CLEAR_ORDER",clearOrder);
+}
 

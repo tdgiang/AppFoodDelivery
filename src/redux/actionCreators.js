@@ -125,4 +125,11 @@ export const decreFoodOrder=(idFood)=>{
     }
 }
 
+export const clearOrder=()=>{
+    return{
+        type:"CLEAR_ORDER"
+    }
+}
+
+
 

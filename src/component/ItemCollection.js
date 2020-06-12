@@ -12,7 +12,7 @@ export default class ItemCollection extends Component {
             return (
                 <TouchableOpacity
                 key={_id}
-                    style={itemCollection}
+                    style={[itemCollection]}
                     onPress={()=>this.props.navigation.navigate("CollectionDetail")}
                 >
                     <ImageBackground

@@ -39,51 +39,51 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
                             />
                         </TouchableOpacity>
                         <View style={row} >
-                        <TouchableOpacity 
-                            onPress={()=>{
-                                if(this.props.favorites==null){
-                                    this.props.addFavorite(this.props.route.params.food);
-                                }else{
-                                    if(this.props.favorites.find(item=>item._id===_id)){
-                                        alert("Đồ ăn này đã tồn tại trong mục ưa thích!");
-                                    }else{
+                            <TouchableOpacity 
+                                onPress={()=>{
+                                    if(this.props.favorites==null){
                                         this.props.addFavorite(this.props.route.params.food);
-                                    }
-
-                                }
-                                
-                            }
-                            }
-                        >
-                            <Icon
-                                name={'bookmark'}
-                                size={20}
-                                color={'white'}
-                                style={{marginRight:20}}
-
-                            />
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={()=>{
-                                if(this.props.orders==null){
-                                    this.props.addOrder(this.props.route.params.food);
-                                }else{
-                                    if(this.props.orders.find(item=>item._id===_id)){
-                                        alert("Đồ ăn này đã tồn tại trong mục giỏ hàng!");
                                     }else{
-                                        this.props.addOrder(this.props.route.params.food);
-                                    }
+                                        if(this.props.favorites.find(item=>item._id===_id)){
+                                            alert("Đồ ăn này đã tồn tại trong mục ưa thích!");
+                                        }else{
+                                            this.props.addFavorite(this.props.route.params.food);
+                                        }
 
+                                    }
+                                    
                                 }
-                            }
-                            }
-                        >
-                            <Icon
-                                name={'shopping-cart'}
-                                size={20}
-                                color={'white'}
-                            />
-                        </TouchableOpacity>
+                                }
+                            >
+                                <Icon
+                                    name={'bookmark'}
+                                    size={20}
+                                    color={'white'}
+                                    style={{marginRight:20}}
+
+                                />
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={()=>{
+                                    if(this.props.orders==null){
+                                        this.props.addOrder(this.props.route.params.food);
+                                    }else{
+                                        if(this.props.orders.find(item=>item._id===_id)){
+                                            alert("Đồ ăn này đã tồn tại trong mục giỏ hàng!");
+                                        }else{
+                                            this.props.addOrder(this.props.route.params.food);
+                                        }
+
+                                    }
+                                }
+                                }
+                            >
+                                <Icon
+                                    name={'shopping-cart'}
+                                    size={20}
+                                    color={'white'}
+                                />
+                            </TouchableOpacity>
                         </View>
                     </View>
                     </LinearGradient>

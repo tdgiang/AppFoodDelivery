@@ -24,7 +24,7 @@ export default class Collections extends Component {
                             />
                         </TouchableOpacity>
 
-                        <Text  h2>Collections</Text>
+                        <Text bold  h2>Collections</Text>
                         <View />
 
 
@@ -34,7 +34,7 @@ export default class Collections extends Component {
 
                 <FlatList
                     style={{
-                        paddingHorizontal:20
+                        paddingHorizontal:20,
                     }}
                     columnWrapperStyle={{
                         justifyContent:'space-between'
@@ -43,7 +43,7 @@ export default class Collections extends Component {
                     showsVerticalScrollIndicator={false}
                     numColumns={2}
                     data={DataCollection}
-                    renderItem={({item,index})=><ItemCollection key={`${index}`}  navigation={this.props.navigation} item={item} />
+                    renderItem={({item,index})=><ItemCollection key={`${index}`}  index={index} navigation={this.props.navigation} item={item} />
                         
                     }
                 />
