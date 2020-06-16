@@ -36,7 +36,6 @@ const data=[
         img:require('../constants/images/login04.jpg'),
     }
 ];
-//this.props.navigation.replace("tabNavigation")
 
  class Login extends Component {
     constructor(props){
@@ -51,29 +50,25 @@ const data=[
     infiniteScroll(dataList){
         const numberOfData = dataList.length
         let scrollValue = 0, scrolled = 0
-    
         setInterval(function() {
             scrolled ++
             if(scrolled < numberOfData)
-            scrollValue = scrollValue + width
+                scrollValue = scrollValue + width
     
             else{
                 scrollValue = 0
                 scrolled = 0
             }
-         
-             
 
         }, 3000)
     }
     
-
     renderViewDot=()=>(
         <LinearGradient 
                 start={{x: 0, y: 0}} end={{x: 0, y: 1}}
                 colors={['rgba(256, 256, 256, 0)', 'rgba(0, 0, 0, 0.5)']}
                 style={{flex:1}}
-            >  
+        >  
                 <Block flex={1} row center middle >
                     {data.map((val,index)=>{
                         let position = Animated.divide(this.state.scrollX, width)
@@ -116,10 +111,10 @@ const data=[
         const {body,txtInput,btn,slideLogin}=styles;
         const {userName,pass}=this.state;
         return (
-            <KeyboardAvoidingView 
-                style={{flex:1}} 
-                behavior={'height'}
-            >
+            // <KeyboardAvoidingView 
+            //     style={{flex:1}} 
+            //     behavior={'height'}
+            // >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <Block flex={1} >
                         <View  style={slideLogin}  >
@@ -165,7 +160,6 @@ const data=[
                                         placeholder={'Mật khẩu'}
                                         onChangeText={(val)=>this.setState({pass:val})}
                                         secureTextEntry={true}
-                                        
                                     />
                                     <Button style={btn}  color={'orange'}
                                         onPress={()=> {
@@ -209,7 +203,7 @@ const data=[
                         </Block>
                     </Block>
                 </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
+            // </KeyboardAvoidingView>
             
             
         );
