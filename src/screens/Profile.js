@@ -6,7 +6,6 @@ import styles from '../style/styles';
 const avatar =require('../constants/images/avatar.jpg');
 import ProfileItem from '../component/ProfileItem';
 import {connect}  from 'react-redux';
-
 const arrItemclient=[
     {
         id:"pay",
@@ -50,15 +49,17 @@ const arrItemApp=[
     }
 ]
 class Profile extends Component {
-     
+
+
     render() {
         const {imgAvatar,row ,boxMember,boxItem,hr}=styles;
+       
         return (
            <ScrollView  style={{flex:1}}  >
                <Block  flex={1}     center row  padding={[20,20]} >
                    <Block flex={2}  >
                         <Image
-                                source={this.props.user.img}
+                                source={avatar}
                                 style={imgAvatar}
                                 resizeMode={'cover'}
                         />
@@ -66,7 +67,10 @@ class Profile extends Component {
                     <Block  flex={2}    >
                         <View  style={row } >
                                 <Text h2   >{this.props.user.name}</Text>
-                                < TouchableOpacity>
+                                < TouchableOpacity
+                                    onPress={()=>this.props.navigation.navigate("EditProfile",{user:this.props.user})
+                                    }
+                                >
                                     <Icon
                                         name={"chevron-right"}
                                         size={16}
@@ -80,16 +84,11 @@ class Profile extends Component {
                                 name={'crown'}
                                 color={'white'}
                                 style={{marginRight:5}}
-
                             />
-
                             <Text  white align={'center'}  >Vip member</Text>
                         </View>
                         
                     </Block>
-                    
-
-                   
                </Block>
                <Block flex={3}  >
                     <View   style={boxItem} >
@@ -121,8 +120,5 @@ const mapStateToProps=(state)=>{
         user:state.user
     } 
 }
-
- 
-
 
 export default  connect(mapStateToProps)(Profile);

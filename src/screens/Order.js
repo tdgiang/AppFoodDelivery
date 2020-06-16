@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View ,TouchableOpacity } from 'react-native';
+import { View ,TouchableOpacity,Alert } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Header from '../component/Hearder';
@@ -47,7 +47,22 @@ class Order extends Component {
                                     onPress={()=>{
                                         if(item.count==1)
                                         {
-                                            this.props.deleteOrder(item._id)
+                                            Alert.alert(
+                                                "Thông báo!",
+                                                `Bạn có chắc chắn muốn xóa ${item.name} khỏi giỏ hàng không?`,
+                                                [
+                                                  { 
+                                                    text: "OK",
+                                                    onPress: () => this.props.deleteOrder(item._id) ,
+                                                    style:'destructive'
+                                                },
+                                                {
+                                                    text: "Cancel",
+                                                    style: 'cancel'
+                                                  }
+                                                ],
+                                                { cancelable: false }
+                                              )
                                         }else
                                             this.props.decreFoodOrder(item._id)
                                     }}
@@ -61,13 +76,28 @@ class Order extends Component {
             </View>
         )
     }
+    
     renderHiddenItem = (item) => (
         <View style={styles.rowSwipeOrder}>
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
-                onPress={() => {
-                     this.props.deleteOrder(item._id);
-                }}
+                onPress={() => Alert.alert(
+                    "Thông báo!",
+                    `Bạn có chắc chắn muốn xóa ${item.name} khỏi giỏ hàng không?`,
+                    [
+                      { 
+                        text: "OK",
+                        onPress: () => this.props.deleteOrder(item._id) ,
+                        style:'destructive'
+                    },
+                    {
+                        text: "Cancel",
+                        style: 'cancel'
+                      }
+                    ],
+                    { cancelable: false }
+                  )
+                }
             >
                 <Text white>Xóa</Text>
             </TouchableOpacity>
@@ -111,8 +141,13 @@ class Order extends Component {
                         color={'orange'} 
                         style={btnTotal}  
                         onPress={()=>{
-                            this.props.addOrderInBill(this.props.addOrderInBill({foodOrder:this.props.orders,totalBill:this.totalFood()+this.totalDeliver()}))
-                            this.props.navigation.navigate("ConfirmOrder")
+                            if(this.props.orders.length==0){
+                                Alert.alert("Thông báo!","Đơn hàng của bạn không tồn tại món nào. Vui lòng chọn món để tiếp tục!")
+                            }else{
+                                this.props.addOrderInBill(this.props.addOrderInBill({foodOrder:this.props.orders,totalBill:this.totalFood()+this.totalDeliver()}))
+                                this.props.navigation.navigate("ConfirmOrder")
+                            }
+                           
                         }
                         }
                     >

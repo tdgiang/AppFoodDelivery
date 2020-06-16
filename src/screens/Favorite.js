@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View,Image,TextInput,
-    ScrollView ,StyleSheet,    
+import { View,
     TouchableOpacity,
-    TouchableHighlight, 
+    Alert
 } from 'react-native';
-import {Block,Button,Text} from '../component/index';
+import {Block,Text} from '../component/index';
 import FavoriteItem from '../component/FavoriteItem';
 import Header from '../component/Hearder';
 import styles from '../style/styles';
@@ -15,16 +14,31 @@ class Favorite extends Component {
 
     renderItem(item,index){
         return(
-            <FavoriteItem key={`${index}`} navigation={this.props.navigation} item={item} />
+            <FavoriteItem key={`${index}`}   navigation={this.props.navigation} item={item} />
         )
-        
     }
     renderHiddenItem = (item) => (
         <View style={styles.rowSwipeFavorite}>
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
                 onPress={() => {
-                     this.props.deleteFavorite(item._id);
+                    Alert.alert(
+                        "Thông báo!",
+                        `Bạn có chắc chắn muốn xóa ${item.name} khỏi món ưa thích của bạn không?`,
+                        [
+                          { 
+                            text: "OK",
+                            onPress: () =>  this.props.deleteFavorite(item._id),
+                            style:'destructive'
+                        },
+                        {
+                            text: "Cancel",
+                            style: 'cancel'
+                          }
+                        ],
+                        { cancelable: false }
+                      )
+                    
                 }}
             >
                 <Text white>Xóa</Text>
@@ -39,8 +53,6 @@ class Favorite extends Component {
         return (
             <Block flex={1}>
                 <Header  nameTab={"My Favorite"} />
-
-            
             <Block   padding={[10,10,0, 10]}  >
                 <SwipeListView
                     data={this.props.favorites}
@@ -53,6 +65,7 @@ class Favorite extends Component {
                     keyExtractor={item=>item._id}
                     showsVerticalScrollIndicator={false}
                 />   
+               
             </Block>
            </Block>
             

@@ -2,7 +2,8 @@ import {call,all} from 'redux-saga/effects';
 import {watchFetchFoods} from './foodSagas';
 import {watchGetFavorite,watchAddFavorite,watchDeleteFavorite}  from './favoriteSagas';
 import {watchGetOrder,watchAddOrder,watchDeleteOrder,watchClearOrder} from './orderSagas';
-
+import {watchEditProfile}  from './userSagas';
+import {watchFetchCollections}  from './collectionsSagas';
 export default function* rootSaga(){
     yield all([
         call(watchFetchFoods),
@@ -13,6 +14,8 @@ export default function* rootSaga(){
         call(watchGetOrder),
         call(watchAddOrder),
         call(watchDeleteOrder),
-        call(watchClearOrder)
+        call(watchClearOrder),
+        call(watchEditProfile),
+        call(watchFetchCollections)
     ])
 }

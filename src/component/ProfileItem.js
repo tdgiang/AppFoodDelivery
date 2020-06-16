@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import { View,TextInput,ScrollView,Image ,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
- 
 import styles from '../style/styles';
-
 import Rating from './Rating';
 export default class ProfileItem extends Component {
     constructor(props){
         super(props)
     }
-     
     render() {
         const {imgAvatar,row ,boxMember,btnIcon,rowBetween,boxIconProfile,hr}=styles;
         const {id,txtName,iconName}=this.props.item;
-
         return (
+            <TouchableOpacity>
             <View  style={[rowBetween,{paddingVertical:5}]}     >
                             <View  style={row} >
                                 <View  style={boxIconProfile} >
@@ -25,12 +22,8 @@ export default class ProfileItem extends Component {
                                         color={'white'}
                                     />
                                 </View>
-
                                 <Text h3 >{txtName}</Text>
-                                
-
                             </View>
-                            <TouchableOpacity>
                                 <Icon
                                     name={"chevron-right"}
                                     size={16}
@@ -38,11 +31,10 @@ export default class ProfileItem extends Component {
                                     style={{marginRight:5}}
 
                                 />
-                            </TouchableOpacity>
                             <View  style={hr}  />
                             
             </View>
-
+            </TouchableOpacity>
         );
     }
 }

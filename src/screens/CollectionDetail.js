@@ -5,17 +5,19 @@ import  styles  from '../style/styles';
 const img=require('../constants/images/login2.jpg')
 import FavoriteItem from '../component/FavoriteItem';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import assects from '../constants/data/assects';
 export default class CollectionDetail extends Component {
      
     render() {
-        const {boxSlide}=styles
+        const {boxSlide}=styles;
+        const {listFoods,id}=this.props.route.params;
         return (
             <Block
                
             >
                 <ImageBackground
                     style={boxSlide}
-                    source={img}
+                    source={assects[id]}
                 >
                     <TouchableOpacity
                         onPress={()=> this.props.navigation.pop()}
@@ -23,8 +25,8 @@ export default class CollectionDetail extends Component {
                         <Icon
                             name={'arrow-left'}
                             size={20}
-                            color={'white'}
-                            style={{margin:20}}
+                            color={'black'}
+                            style={{margin:10}}
                         />
                     </TouchableOpacity>
 
@@ -33,12 +35,8 @@ export default class CollectionDetail extends Component {
                     style={{paddingHorizontal:20,marginTop:10}}
                     showsVerticalScrollIndicator={false}
                 >
-                    <Text  h2>23 món</Text>
-                    <FavoriteItem navigation={this.props.navigation} />
-                    <FavoriteItem navigation={this.props.navigation} />
-                    <FavoriteItem  navigation={this.props.navigation}/>
-                    <FavoriteItem navigation={this.props.navigation} />
-
+                    <Text orange h3>{`${listFoods.length} món`}</Text>
+                    {listFoods.map(e=><FavoriteItem key={e._id} navigation={this.props.navigation} item={e}  />)}
                 </ScrollView>
             </Block>
             

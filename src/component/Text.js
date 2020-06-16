@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: sizes.font,
     color: colors.black
   },
+ // fontFamily:'OpenSans-Bold',
   // variations
   regular: {
     fontWeight: "normal"

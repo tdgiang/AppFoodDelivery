@@ -109,7 +109,7 @@ const DataFood=[
             near: false,
             _id: "5ecf7e43e138071154f8bae72",
             name: "Khoai Tây Chiên",
-            nameStore: "",
+            nameStore: "Hằng Bánh Xèo",
             price: 60000,
             rating: 4.6,
             bookmark: 635,

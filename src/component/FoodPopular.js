@@ -11,8 +11,7 @@ export default class FoodPopular extends Component {
         super(props)
     }
      renderItemFoodPopular(e){
-        const  {_id,name,price,address,img,photo,rating,bookmark}=e;  
-
+        const  {_id,name,price,address,photo,rating,bookmark,images,range}=e;  
         const {itemFoodPopular,imgFoodPopular}=styles;
         return(
             <TouchableOpacity
@@ -21,7 +20,7 @@ export default class FoodPopular extends Component {
             >
                 <View   style={itemFoodPopular} >
                             <Image
-                            source={img}
+                            source={{uri:images[0]}}
                             style={imgFoodPopular}
                             resizeMode={'cover'}
                             />
@@ -31,7 +30,7 @@ export default class FoodPopular extends Component {
                             </Block>
                                 <Text  title >$ {price}</Text>
                                 <Text numberOfLines={1} gray >{address}</Text>
-                            <Rating photo={photo} rating={rating}  bookmark={bookmark}  /> 
+                            <Rating photo={photo} rating={rating} range={range} bookmark={bookmark}  /> 
                 </View>
             </TouchableOpacity>
             

@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeStack from './HomeStack';
 import OrderStack from './OrderStack';
 import FavoriteStack from './FavoriteStack';
-import Profile from '../screens/Profile';
+import ProfileStack from './ProfileStack';
 import {colors} from '../constants/theme';
  
 
@@ -59,7 +59,7 @@ function MyTabs( navigationStack) {
       />
       <Tab.Screen 
         name="Profile" 
-        component={Profile} 
+        component={ProfileStack} 
         options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color, size }) => (

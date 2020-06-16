@@ -18,9 +18,7 @@ const styles=StyleSheet.create({
         paddingHorizontal:20,
         marginVertical:5,
         borderRadius:20,
-        paddingVertical:10,
-
-        
+        height:42
     },
     btn:{
         borderRadius:20,
@@ -87,7 +85,6 @@ const styles=StyleSheet.create({
         paddingHorizontal:5,
         borderRadius:sizes.small,
         backgroundColor:colors.orange,
-         
     },
   
     imgFoodNear:{
@@ -165,7 +162,7 @@ const styles=StyleSheet.create({
     },
     iconBookmark:{   
         position:'absolute',
-        right:0,
+        right:-12,
         top:-5,
         width:20,
         height:30,
@@ -177,9 +174,11 @@ const styles=StyleSheet.create({
         paddingHorizontal:10,
         elevation:sizes.small,
         borderRadius:sizes.small,
-        marginVertical:sizes.small*2,
-        height:130
-         
+        height:130,
+        borderLeftWidth:2,
+        borderLeftColor:colors.gray4,
+        borderRightWidth:2,
+        borderRightColor:colors.gray4,
     },
     rowSwipeFavorite:{
         flexDirection:'row',
@@ -206,7 +205,7 @@ const styles=StyleSheet.create({
         alignItems:'center',
          flexDirection:'row',
         borderRadius:sizes.small,
-        backgroundColor:colors.accent,
+        backgroundColor:colors.red,
         marginTop:sizes.small*2
     },
     boxIconProfile:{
@@ -281,7 +280,8 @@ const styles=StyleSheet.create({
     containerProfile:{
         backgroundColor:'white',
         borderRadius:sizes.small*2,
-        elevation:sizes.small
+        elevation:sizes.small,
+        marginTop:50
         
     },
     boxAvatar:{
@@ -434,9 +434,9 @@ const styles=StyleSheet.create({
         padding:10,
         backgroundColor:colors.white,
         marginVertical:10
-    }
-
-
+    },
+   
+  
 
 
 })

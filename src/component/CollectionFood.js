@@ -4,11 +4,16 @@ import {Block,Button,Text} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
-import DataCollection from '../constants/data/DataCollection';
- export default class CollectionFood extends Component {
+import { connect } from 'react-redux';
+import assets from '../constants/data/assects';
+
+class CollectionFood extends Component {
+    
      
      render() {
             const  {imgCollectionHome,btnIcon,boxShowAll}=styles;
+          
+            
             return (
                 <Block  flex={1}   margin={[10,0]}    >
                     <Block  row  space={'between'} >
@@ -33,14 +38,14 @@ import DataCollection from '../constants/data/DataCollection';
                         style={{marginVertical:10}}
                 
                     >
-                        {DataCollection.map(e=>(
+                        {this.props.collections.map(e=>(
                             <TouchableOpacity
                             key={e._id}
                             onPress={()=> this.props.navigation.navigate("CollectionDetail")}
                             style={{marginRight:15}}
                         >
                             <Image
-                            source={e.img}
+                            source={assets[e._id]}
                             style={imgCollectionHome}
                             resizeMode={'cover'}
                             />
@@ -52,3 +57,10 @@ import DataCollection from '../constants/data/DataCollection';
             );
      }
  }
+ const mapStateToProps=(state)=>{
+     return{
+        collections:state.collections
+     }
+ }
+
+ export default  connect(mapStateToProps)(CollectionFood);

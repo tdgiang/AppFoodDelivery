@@ -10,6 +10,7 @@ import styles from '../style/styles';
 export default class Rating extends Component {
      
     render() {
+        const {bookmark,rating,range}=this.props
         const  {boxFree,row}=styles;
         return (
             <View style={row}>
@@ -18,12 +19,17 @@ export default class Rating extends Component {
                     name={"star"}
                     color={colors.orange}
                     />
-                    <Text  > {this.props.rating} </Text>
-                    <Text gray > ({this.props.bookmark} ratings) </Text>
+                    <Text  > {rating} </Text>
+                    <Text gray > ({bookmark} ratings) </Text>
                 </Block>
-                <View   style={boxFree}  >
-                    <Text white >Free delivery</Text>
-                </View>
+                {range<10?(
+                    <View   style={boxFree}  >
+                        <Text white >Free delivery</Text>
+                    </View>
+                ):(
+                <Text>{range} km</Text>
+                )}
+                
                  
             </View>
  

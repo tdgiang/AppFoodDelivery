@@ -11,15 +11,16 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
  class FoodDetail extends Component {
     render() {
         const {boxSlideDetail,bodyFoodDetail,boxFree,headerFoodDetail,row,imgFoodDetail}=styles;
-        const {_id,name,img,address,bookmark,photo,description,rating,nameStore}=this.props.route.params.food;
+        const {_id,name,images,address,bookmark,photo,description,rating,nameStore,range}=this.props.route.params.food;
         return (
             <ScrollView
                showsVerticalScrollIndicator={false}
+              
             >
                 <ImageBackground
                     style={boxSlideDetail}
-                    source={img}
-
+                    source={{uri:images[0]}}
+                    key={_id}
                 >
                        <LinearGradient 
                         start={{x: 0, y: 0}} end={{x: 0, y: 1}}
@@ -93,10 +94,13 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
                         <Text  h1 >{name}</Text>
                         <Text style={{marginVertical:5}} gray h3 >{address}</Text>
                         <Block row >
-                            <View style={boxFree} >
+                            <Text bold style={{marginRight:30}} >{nameStore}</Text>
+
+                            {range<10?(<View style={boxFree} >
                                 <Text white > Free delivery</Text>
-                            </View>
-                            <Text  style={{marginHorizontal:30}} > 3.2 km</Text>
+                            </View>):(<Text  style={{marginHorizontal:30}} > {`${range} km`}</Text>)}
+                            
+                            
                         </Block>
                     </Block>
                     <ContainerFeedBack ratings={rating}  bookmark={bookmark}  photo={photo}  />
@@ -106,24 +110,21 @@ import ContainerFeedBack from '../component/ContainerFeedBack';
                         </Text>
                     </Block>
                     <Block margin={[10,0]} >
-                        <Text h2 >Photo</Text>
+                        <Text h2 >Photos</Text>
                         <Block row margin={[10,0]}   >
                             <ScrollView
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <Image
+                                {images.slice(1).map((e,index)=> <Image
+                                    key={`${index}`}
                                     style={imgFoodDetail}
-                                    source={img}
+                                    source={{uri:e}}
                                 />
-                                <Image
-                                    style={imgFoodDetail}
-                                    source={img}
-                                />
-                                <Image
-                                    style={imgFoodDetail}
-                                    source={img}
-                                />
+                                )
+                                }
+                               
+                               
              
                             </ScrollView>
                         </Block>

@@ -61,7 +61,6 @@ export default class DetailOrder extends Component {
                             <TouchableOpacity>
                                 <Text orange title bold >đ {dataOrder.totalBill}</Text>
                             </TouchableOpacity>
-                        
                         </Block>
                     </Block>
                 </Block>
@@ -73,7 +72,7 @@ export default class DetailOrder extends Component {
                 {dataOrder.foodOrder.map(e=>(
                     <Block key={e._id} >
                         <Block row padding={[10,20]} >
-                    <Image style={imgFoodNear}  source={e.img} />
+                    <Image style={imgFoodNear}  source={{uri:e.images[0]}} />
                     <Block  margin={[0,10]} space={'around'} >
                         <Text title >{e.name}</Text>
                         <Text>đ {e.price}</Text>

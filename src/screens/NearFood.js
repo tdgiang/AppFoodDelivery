@@ -42,7 +42,6 @@ class NearFood extends Component {
                     <Image
                         source={item.img}
                         style={{width:width/2-20,height:height/4-50,borderRadius:5}}
-                        
                     />
                 </Block>
                 <Block >

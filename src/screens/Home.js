@@ -11,13 +11,19 @@ import CollectionFood from '../component/CollectionFood';
 import DataFood from '../constants/data/DataFood';
 import {connect} from 'react-redux';
 
-import assects from '../constants/data/assects.js';
 
 class Home extends Component {
-     
-     
+    
+  constructor(props){
+    super(props);
+    this.state={
+      popularFoods:this.props.foods.filter(e=>e.popular)
+    }
+  }
+  
     render() {
       const  {scrollStyle,txtInputHome,btnSearch}=styles;
+      const {popularFoods}=this.state;
         return (
              <ScrollView 
                 style={scrollStyle}   
@@ -38,26 +44,9 @@ class Home extends Component {
                     />
                   </Button>
                 </Block>
-                <FoodPopular popularFoods={DataFood.slice(0,4)} navigation={this.props.navigation}   />
+                <FoodPopular popularFoods={popularFoods} navigation={this.props.navigation}   />
                 <FoodNear nearFoods={DataFood.slice(5,8)} navigation={this.props.navigation}    />
-                <CollectionFood navigation={this.props.navigation}   />
-
-                <Block>
-                    {this.props.foods.slice(0,10).map(e=>{
-                      return(
-                        <View>
-                          <Text>{e.img.slice(20).slice(0,e.img.slice(20).length-4)}</Text>
-                          <Image 
-                            style={{width:100,height:100}}
-                            source={assects[e.img.slice(20).slice(0,e.img.slice(20).length-4)]}
-                          />
-                        </View>
-                      )
-                    }
-                    )}
-                    
-                </Block>
-
+                <CollectionFood navigation={this.props.navigation}  />
              </ScrollView>
             
         );
@@ -66,6 +55,7 @@ class Home extends Component {
 const mapStateToProps=(state)=>{
   return {
     foods:state.foods
+   
   }
 }
 

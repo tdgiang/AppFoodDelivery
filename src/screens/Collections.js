@@ -6,7 +6,10 @@ import DataCollection from '../constants/data/DataCollection';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import ItemCollection from '../component/ItemCollection';
 import styles from '../style/styles';
-export default class Collections extends Component {
+
+import {connect}  from 'react-redux';
+
+class Collections extends Component {
      
     render() {
         return (
@@ -30,8 +33,6 @@ export default class Collections extends Component {
 
                     </Block>
                 </View>
-               
-
                 <FlatList
                     style={{
                         paddingHorizontal:20,
@@ -42,7 +43,7 @@ export default class Collections extends Component {
                     keyExtractor={item=>item._id}
                     showsVerticalScrollIndicator={false}
                     numColumns={2}
-                    data={DataCollection}
+                    data={this.props.collections}
                     renderItem={({item,index})=><ItemCollection key={`${index}`}  index={index} navigation={this.props.navigation} item={item} />
                         
                     }
@@ -53,3 +54,12 @@ export default class Collections extends Component {
         );
     }
 }
+
+const mapStateToProps=(state)=>{
+    return{
+        collections:state.collections
+    }
+}
+
+
+export default connect(mapStateToProps)(Collections)

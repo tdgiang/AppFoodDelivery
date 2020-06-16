@@ -1,39 +1,67 @@
 import React, { Component } from 'react';
-import { View,Image,StyleSheet,ImageBackground,StatusBar } from 'react-native';
+import { View,Image,StyleSheet,ImageBackground,ActivityIndicator,Dimensions  } from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {fetchFoods,getFavorite,getOrders} from '../redux/actionCreators';
+import {fetchCollections}  from '../redux/action/actionCollections';
 import {connect}  from 'react-redux';
 const bgWelcome=require('../constants/images/bgWelcome1.jpg')
-
+const {width,height}=Dimensions.get('window');
 
 class Welcome extends Component {
-    componentDidMount(){
-       // this.props.fetchFoods();
+    constructor(props){
+        super(props);
+        this.state={
+            loading:true
+        }
+    }
+    UNSAFE_componentWillMount(){
+        this.props.fetchCollections();
+        this.props.fetchFoods();
         this.props.getFavorite();
         this.props.getOrders();
+        setTimeout(()=>this.setState({loading:false}),2000)
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
-        
+        const {loading}=this.state;
         return (
-                 
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>
                      <LinearGradient 
                         start={{x: 0, y: 0}} end={{x: 0, y: 1}}
                         colors={['rgba(256, 256, 256, 0)', 'rgba(0, 0, 0, 0.8)']}
                         style={linearGradient}
                     >  
+                    {loading?(  
+                    <LinearGradient 
+                        start={{x: 0, y: 0}} end={{x: 0, y: 1}}
+                        colors={['rgba(256, 256, 256, 0)', 'rgba(0, 0, 0, 0.7)']}
+                        style={{ width,
+                            height,
+                            position:'absolute',
+                            zIndex:1,
+                            justifyContent:'center',
+                            alignItems:'center'}}
+                    >  
+                        <ActivityIndicator size="large" color="#FF8C00" />
+                    </LinearGradient>
+                    ):(<View />)
+                    
+                    }
                     <Block  flex={1} />
+                 
                     <Block  flex={2} >
+                        
+                   
                         <Text  style={txtTitle}  >DELIVERED</Text>
                         <Text  style={txtTitle}>FAST FOOD</Text>
                         <Text   style={txtTitle} >TO YOUR</Text>
                         <Text  style={txtTitle} >DOOR</Text>
                         <Block  margin={[20,0]} >
-                            <Text h3  white >Set exact location to find the right restaurant near you.</Text>
+                            <Text h3  white  >Giao hàng cực nhanh </Text>
+                            <Text h3  white  >Như cách người yêu cũ trở mặt :3</Text>
                         </Block>
                     </Block>
                    
@@ -61,15 +89,15 @@ class Welcome extends Component {
         );
     }
 }
-
 const mapStateToProps=(state)=>{
     return {
         favorites:state.favorites,
-        orders:state.orders
+        orders:state.orders,
+        collections:state.collections
     }
   }
 
-export default  connect(mapStateToProps,{fetchFoods,getFavorite,getOrders})(Welcome);
+export default  connect(mapStateToProps,{fetchFoods,getFavorite,getOrders,fetchCollections})(Welcome);
 
 const styles=StyleSheet.create({
     bgStyle:{
