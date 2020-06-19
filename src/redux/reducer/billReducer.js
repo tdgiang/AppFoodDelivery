@@ -7,13 +7,24 @@ const billReducer=(bill={},action)=>{
         case "ADD_ADDRESS_IN_BILL":
             return{
                 ...bill,
-                address:action.dataAddress
+                contact:action.dataAddress
             }
         case "ADD_PAY_METHOD_IN_BILL":
             return{
                 ...bill,
                 payMethod:action.dataPayMethod
             }
+            case "SEND_BILL_SUCCEEDED":
+                return{
+                    ...bill,
+                    status:3,
+                    idServer:action.idBill
+                }
+        case "SEND_BILL_FAILED":
+                return{
+                    ...bill,
+                    status:2
+                }
         default:
             return bill;
     }

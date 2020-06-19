@@ -17,8 +17,8 @@ export default class DetailOrder extends Component {
     }
     render() {
         const {hr1,btnTotal,imgFoodNear}=styles
-       const {address,dataOrder,payMethod}=this.props.bill;
-       const arrAddress=address.address.split(',');
+       const {contact,dataOrder,payMethod}=this.props.bill;
+       const arrAddress=contact.address.split(',');
         
         return (
             <ScrollView  showsVerticalScrollIndicator={false}   >
@@ -35,8 +35,8 @@ export default class DetailOrder extends Component {
                         </TouchableOpacity>
                     </Block>
                     <Block row  space={'between'}  >
-                        <Text title >{address.name}</Text>
-                        <Text title>{address.sdt}</Text>
+                        <Text title >{contact.name}</Text>
+                        <Text title>{contact.sdt}</Text>
                         
                     </Block>
                     {arrAddress.map(e=><Text key={e} >{e}</Text>)}

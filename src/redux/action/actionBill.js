@@ -22,3 +22,10 @@ export const addPayMethodInBill=(dataPayMethod)=>{
         dataPayMethod
     }
 }
+
+export const sendBill=(bill)=>{
+    return{
+        type:"SEND_BILL",
+        bill
+    }
+}

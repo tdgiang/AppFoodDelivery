@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
-import {  View ,TouchableOpacity,ScrollView} from 'react-native'
+import {  View ,TouchableOpacity,ScrollView,Alert} from 'react-native'
 import StepIndicator from 'react-native-step-indicator'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
+import {connect}  from 'react-redux';
+import {clearOrder} from '../redux/actionCreators';
+import {completedBill}  from '../saga/api';
 const secondIndicatorStyles = {
   stepIndicatorSize: 40,
   currentStepIndicatorSize: 45,
@@ -59,7 +62,7 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
   return iconConfig
 }
 
-export default class DeliveryProgress extends Component {
+ class DeliveryProgress extends Component {
   constructor () {
     super()
     this.state = {
@@ -124,10 +127,27 @@ export default class DeliveryProgress extends Component {
     }
   }
 
+  totalFood(){
+    let total=0;
+    this.props.bill.dataOrder.foodOrder.map(e=>{
+        total+=e.price*e.count;
+    })
+    return total;
+}
+  totalDeliver(){
+      let total=0;
+      this.props.bill.dataOrder.foodOrder.map(e=>{
+          total+=e.range*1000
+      })
+      
+      return total;
+  }
+
   render () {
     const {footerDelivery,boxDelivery,btnTotal,hr1,borderDashed,bodyDelivery}=styles;
-    const {dataOrder,payMethod}=this.props.route.params.bill;
-   
+    
+    console.log(this.props.bill);
+    const {dataOrder,payMethod}=this.props.bill
     return (
       <Block flex={1}>
         <View style={{margin:10}}  >
@@ -147,7 +167,7 @@ export default class DeliveryProgress extends Component {
         </View>
         <Block  flex={1}    >
           <ScrollView  >
-              <Block   style={bodyDelivery}   padding={[10,5]} margin={[20,20]} color={'white'} >
+            <Block   style={bodyDelivery}   padding={[10,5]} margin={[20,20]} color={'white'} >
                 <Text bold h3 >Chi tiết đơn hàng</Text>
                 <View  style={hr1} />
                 <Block style={borderDashed} >
@@ -164,7 +184,7 @@ export default class DeliveryProgress extends Component {
 
                     </Block>
                   </Block>
-                  {dataOrder.foodOrder.map(e=>(
+                    {dataOrder.foodOrder.map(e=>(
                       <Block row  key={e._id} >
                         <Block flex={4}  >
                             <Text title  >{e.name}</Text>
@@ -180,23 +200,23 @@ export default class DeliveryProgress extends Component {
                     </Block>
                   )
                   )}
-                </Block>
+                </Block>  
                
-                <Block  row space={'between'} >
+                 <Block  row space={'between'} >
                   <Text title bold >Phí đồ ăn</Text>
-                  <Text title   bold >{dataOrder.totalBill} đ</Text>
+                  <Text title   bold >{this.totalFood()} đ</Text>
                 </Block>
                 <Block  row space={'between'} >
                   <Text title bold >Phí dich vụ</Text>
-                  <Text title   bold >0 đ</Text>
+                  <Text title   bold >{this.totalDeliver()}đ</Text>
                 </Block>
                 <Block  row space={'between'} >
                   <Text title bold >Tổng đơn hàng</Text>
                   <Text title accent  bold >{dataOrder.totalBill} đ</Text>
                 </Block>
                 <View  style={hr1} />
-                  {this.renderPayMethod(payMethod)}
-              </Block>
+                  {this.renderPayMethod(payMethod)}  
+              </Block> 
           </ScrollView>
 
           <View  style={footerDelivery} >
@@ -236,25 +256,37 @@ export default class DeliveryProgress extends Component {
             </Block>
             <Block flex={1} padding={[0,20]} >
               <Button 
-                style={btnTotal} 
-                onPress={()=>this.props.navigation.navigate('Order')}
+                style={btnTotal}
+                onPress={async ()=>{
+                  let result=await completedBill(this.props.bill.idServer);
+                  if(result){
+                    Alert.alert("Thông báo!","Hoàn thành đơn hàng.Chúc quý khách ngon miệng!")
+                    this.props.clearOrder();
+                    this.props.navigation.navigate('Order');
+                   
+                  }
+                  else{
+                    Alert.alert("Thông báo!","Đơn hàng chưa thể hoàn thành trong lúc này!")
+                  }
+                  
+                }}
               >
                   <Text  h3   white>Đã nhận hàng</Text>
               </Button>
-
             </Block>
-          
           </View>
-
         </Block>
-
-       
-         
-       
       </Block>
     )
   }
 }
 
+const mapStateToProps=(state)=>{
+  return{
+    bill:state.bill
+  }
+}
+
+export default connect(mapStateToProps,{clearOrder})(DeliveryProgress)
 
  

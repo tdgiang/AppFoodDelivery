@@ -21,6 +21,9 @@ class Order extends Component {
     }
     totalDeliver(){
         let total=0;
+        this.props.orders.map(e=>{
+            total+=e.range*1000
+        })
         
         return total;
     }
@@ -71,7 +74,7 @@ class Order extends Component {
                                 </TouchableOpacity>
                         </View>
                         <Text gray1 >Giá :{item.price}</Text>
-                        <Text gray1 >Ship :12000</Text>
+                        <Text gray1 >Ship :{item.range*1000}</Text>
                     </Block>
             </View>
         )
