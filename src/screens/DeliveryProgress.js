@@ -7,6 +7,7 @@ import styles from '../style/styles';
 import {connect}  from 'react-redux';
 import {clearOrder} from '../redux/actionCreators';
 import {completedBill}  from '../saga/api';
+import {addHistory}  from '../redux/action/actionHistory';
 const secondIndicatorStyles = {
   stepIndicatorSize: 40,
   currentStepIndicatorSize: 45,
@@ -262,13 +263,12 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
                   if(result){
                     Alert.alert("Thông báo!","Hoàn thành đơn hàng.Chúc quý khách ngon miệng!")
                     this.props.clearOrder();
+                    this.props.addHistory(this.props.bill);
                     this.props.navigation.navigate('Order');
-                   
                   }
                   else{
                     Alert.alert("Thông báo!","Đơn hàng chưa thể hoàn thành trong lúc này!")
                   }
-                  
                 }}
               >
                   <Text  h3   white>Đã nhận hàng</Text>
@@ -287,6 +287,6 @@ const mapStateToProps=(state)=>{
   }
 }
 
-export default connect(mapStateToProps,{clearOrder})(DeliveryProgress)
+export default connect(mapStateToProps,{clearOrder,addHistory})(DeliveryProgress)
 
  

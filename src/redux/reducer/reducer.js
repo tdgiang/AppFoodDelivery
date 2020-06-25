@@ -7,13 +7,15 @@ import orderReducer from './orderReducer';
 import userReducer from './userReducer';
 import billReducer from './billReducer';
 import collectionsReducer from './collectionsReducer';
+import historyReducer from './historyReducer';
 const reducer=combineReducers({
     foods:foodsReducer,
     favorites:favoriteReducer,
     orders:orderReducer,
     user:userReducer,
     bill:billReducer,
-    collections:collectionsReducer
+    collections:collectionsReducer,
+    history:historyReducer
 })
 
 

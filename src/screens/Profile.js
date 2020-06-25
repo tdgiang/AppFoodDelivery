@@ -4,7 +4,6 @@ import {Block,Button,Text} from '../component/index';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from '../style/styles';
 const avatar =require('../constants/images/avatar.jpg');
-import ProfileItem from '../component/ProfileItem';
 import {connect}  from 'react-redux';
 const arrItemclient=[
     {
@@ -15,7 +14,7 @@ const arrItemclient=[
     },
     
     {
-        id:"history",
+        id:"History",
         txtName:"Lịch sử",
         iconName:"history"
 
@@ -50,6 +49,37 @@ const arrItemApp=[
 ]
 class Profile extends Component {
 
+    renderProfileItem(item){
+        const {row ,rowBetween,boxIconProfile,hr}=styles;
+        const {txtName,iconName,id}=item
+        return (
+            <TouchableOpacity key={id} 
+                onPress={()=>this.props.navigation.navigate(id)
+                }
+            >
+                <View  style={[rowBetween,{paddingVertical:5}]}     >
+                                <View  style={row} >
+                                    <View  style={boxIconProfile} >
+                                        <Icon
+                                            size={16}
+                                            name={iconName}
+                                            color={'white'}
+                                        />
+                                    </View>
+                                    <Text h3 >{txtName}</Text>
+                                </View>
+                                    <Icon
+                                        name={"chevron-right"}
+                                        size={16}
+                                    
+                                        style={{marginRight:5}}
+
+                                    />
+                                <View  style={hr}  />
+                                
+                </View>
+            </TouchableOpacity>
+        )}
 
     render() {
         const {imgAvatar,row ,boxMember,boxItem,hr}=styles;
@@ -93,16 +123,14 @@ class Profile extends Component {
                <Block flex={3}  >
                     <View   style={boxItem} >
                         {arrItemclient.map(e=>
-                            <ProfileItem key={e.id} item={e} />
-
+                            this.renderProfileItem(e)
                         )}
                         
                         
                     </View>
                     <View   style={boxItem} >
                         {arrItemApp.map(e=>
-                            <ProfileItem key={e.id} item={e} />
-
+                            this.renderProfileItem(e)
                         )}
                         
                         

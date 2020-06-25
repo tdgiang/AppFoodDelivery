@@ -5,6 +5,7 @@ import {watchGetOrder,watchAddOrder,watchDeleteOrder,watchClearOrder} from './or
 import {watchEditProfile}  from './userSagas';
 import {watchFetchCollections}  from './collectionsSagas';
 import {watchSendBill}  from './billSagas';
+import {watchGetHistory,watchAddHistory}  from './historySagas';
 export default function* rootSaga(){
     yield all([
         call(watchFetchFoods),
@@ -19,6 +20,7 @@ export default function* rootSaga(){
         call(watchEditProfile),
         call(watchFetchCollections),
         call(watchSendBill),
-        
+        call(watchGetHistory),
+        call(watchAddHistory)
     ])
 }

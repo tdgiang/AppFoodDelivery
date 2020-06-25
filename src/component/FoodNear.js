@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { View,TextInput,ScrollView,Image ,TouchableOpacity } from 'react-native';
 import {Block,Button,Text} from './index';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const  img=require('../constants/images/login1.jpg');
 import styles from '../style/styles';
 
 import Rating from './Rating';
 export default class FoodNear extends Component {
     renderItemFoodNear(item){
         const  {imgFoodNear,rowBetween}=styles;
-        const {_id,name,img,price,address,photo,rating,bookmark,nameStore}=item;
+        const {_id,name,img,images,price,address,photo,rating,bookmark,range,nameStore}=item;
         return(
             <TouchableOpacity
                 key={_id}
@@ -20,7 +19,7 @@ export default class FoodNear extends Component {
                         padding={[5,0]} 
                     >
                         <Image
-                            source={img}
+                            source={{uri:images[0]}}
                             style={imgFoodNear}
                             resizeMode={'cover'}
                             />
@@ -32,7 +31,7 @@ export default class FoodNear extends Component {
                             <Text numberOfLines={1} gray >{nameStore}</Text>
                             <Text numberOfLines={1} gray >{address}</Text>
                             <Block  flex={0.2} row center  space={'between'} >
-                                <Rating  photo={photo} rating={rating}  bookmark={bookmark}  />
+                                <Rating  photo={photo} range={range} rating={rating}  bookmark={bookmark}  />
                             </Block>
                         </Block>
                     </Block>

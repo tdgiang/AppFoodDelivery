@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 //Foods;
-const urlGetFood="http://192.168.0.103:3000/apifoods";
-const urlSignUp="http://192.168.0.103:3000/apiusers";
-const urlLogin="http://192.168.0.103:3000/apiusers/login";
-const urlEditProfile="http://192.168.0.103:3000/apiusers/edit";
-const urlGetCollections="http://192.168.0.103:3000/apicollections/foods";
-const urlSendBill="http://192.168.0.103:3000/apibills";
-const urlCompletedBill="http://192.168.0.103:3000/apibills";
+const urlGetFood="http://192.168.0.106:3000/apifoods";
+const urlSignUp="http://192.168.0.106:3000/apiusers";
+const urlLogin="http://192.168.0.106:3000/apiusers/login";
+const urlEditProfile="http://192.168.0.106:3000/apiusers/edit";
+const urlGetCollections="http://192.168.0.106:3000/apicollections/foods";
+const urlSendBill="http://192.168.0.106:3000/apibills";
+const urlCompletedBill="http://192.168.0.106:3000/apibills";
 function* getFoodsFromAPI(){
     const response=yield fetch(urlGetFood)
     .then(res=>res.json())
@@ -220,6 +220,28 @@ export async function  completedBill(data){
   
 }
 
+//history
+function* getHistory(){
+    try {
+        const jsonValue = yield AsyncStorage.getItem('@arrHistory1')
+        return jsonValue != null ? JSON.parse(jsonValue) : null;
+      } catch(e) {
+            return [];
+      }
+}
+
+function* storageHistory(arrHistory){
+    try {
+        console.log("This is history api");
+        const jsonValue = JSON.stringify(arrHistory);
+        yield AsyncStorage.setItem('@arrHistory1', jsonValue);
+        return true;
+      } catch (e) {
+        return false;
+      }
+}
+
+
 export const api={
     getFoodsFromAPI,
     getFavorite,
@@ -228,5 +250,7 @@ export const api={
     storageOrder,
     editProfileFromAPI,
     getCollectionsFromAPI,
-    sendBill
+    sendBill,
+    getHistory,
+    storageHistory
 }

@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {fetchFoods,getFavorite,getOrders} from '../redux/actionCreators';
+import {getHistory} from '../redux/action/actionHistory';
 import {fetchCollections}  from '../redux/action/actionCollections';
 import {connect}  from 'react-redux';
 const bgWelcome=require('../constants/images/bgWelcome1.jpg')
@@ -21,12 +22,15 @@ class Welcome extends Component {
         this.props.fetchCollections();
         this.props.fetchFoods();
         this.props.getFavorite();
+        this.props.getHistory();
         this.props.getOrders();
         setTimeout(()=>this.setState({loading:false}),2000)
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
         const {loading}=this.state;
+        console.log(this.props.history);
+        
         return (
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>
                      <LinearGradient 
@@ -93,11 +97,12 @@ const mapStateToProps=(state)=>{
     return {
         favorites:state.favorites,
         orders:state.orders,
-        collections:state.collections
+        collections:state.collections,
+        history:state.history
     }
   }
 
-export default  connect(mapStateToProps,{fetchFoods,getFavorite,getOrders,fetchCollections})(Welcome);
+export default  connect(mapStateToProps,{fetchFoods,getFavorite,getOrders,fetchCollections,getHistory})(Welcome);
 
 const styles=StyleSheet.create({
     bgStyle:{

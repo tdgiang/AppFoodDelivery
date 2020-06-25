@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import EditProfile  from '../screens/EditProfile';
 import Profile from '../screens/Profile';
-
+import History  from '../screens/history';
 const Stack = createStackNavigator();
 
 export default class ProfileStack extends Component {
@@ -44,6 +44,11 @@ export default class ProfileStack extends Component {
                         name="EditProfile" 
                         component={EditProfile} 
                         options={{ title: 'Chỉnh sửa hồ sơ' }}
+                    />
+                    <Stack.Screen 
+                        name="History" 
+                        component={History} 
+                        options={{ title: 'Lịch sử đặt hàng' }}
                     />
                     
                   
