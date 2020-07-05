@@ -104,6 +104,7 @@ export default class Search extends Component {
                         />
                         <TextInput 
                             placeholder={'Search'}
+                            autoFocus
                             onChangeText={(val)=>{
                                 this.setState({
                                     data:DataFood.filter(e=>e.name.toLowerCase().includes(val)==true)

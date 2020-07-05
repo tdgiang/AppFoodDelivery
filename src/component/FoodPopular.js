@@ -40,7 +40,7 @@ export default class FoodPopular extends Component {
     render() {
         return (
             <Block  flex={1}       >
-                    <Text h2  bold >Nổi bật </Text>
+                    <Text h2  bold orange >Nổi bật </Text>
                     <ScrollView 
                         horizontal
                         showsHorizontalScrollIndicator={false}

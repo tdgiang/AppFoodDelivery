@@ -64,8 +64,12 @@ class Welcome extends Component {
                         <Text   style={txtTitle} >TO YOUR</Text>
                         <Text  style={txtTitle} >DOOR</Text>
                         <Block  margin={[20,0]} >
-                            <Text h3  white  >Giao hàng cực nhanh </Text>
-                            <Text h3  white  >Như cách người yêu cũ trở mặt :3</Text>
+                            <View>
+                                <Text h3  white  >Giao hàng cực nhanh </Text>
+                            </View>
+                            <View>
+                                <Text h3  white  >Như cách người yêu cũ trở mặt :3</Text>
+                            </View>
                         </Block>
                     </Block>
                    

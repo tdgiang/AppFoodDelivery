@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {TextInput, View,Keyboard } from 'react-native';
+import {TextInput, View,Keyboard,KeyboardAvoidingView,Dimensions} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
 import {addAddressInBill}  from '../redux/action/actionBill';
+const {width,height}=Dimensions.get('window');
 class AddressOrder extends Component {
     constructor(props){
         super(props);
@@ -54,13 +55,17 @@ class AddressOrder extends Component {
                <Modal 
                     isVisible={this.state.isModalVisible}
                     backdropColor="#B4B3DB"
-                    backdropOpacity={0.8}
+                    backdropOpacity={0.5}
                     animationIn="zoomInDown"
                     animationOut="zoomOutUp"
                     animationInTiming={800}
                     animationOutTiming={600}
                >
-                    <Block color={'white'}  style={{borderRadius:10}}  >
+               <KeyboardAvoidingView
+                    style={{width:width-40,height:height-40}}
+                    behavior={'height'}
+                >
+                    <Block color={'white'}  style={{borderRadius:10,flex:1}}  >
                         <Block flex={1} >
                             <View  style={{paddingHorizontal:20}} >
                                 <View style={rowBetween} >
@@ -122,8 +127,7 @@ class AddressOrder extends Component {
                                     />
                                 </View>
                             </View>
-                            <View style={hr1}  />
-                            
+                        
                         </Block>
                         <View style={hr1}  />
                         <Button
@@ -141,6 +145,7 @@ class AddressOrder extends Component {
                             <Text white h2 >Hoàn Thành</Text>
                         </Button>
                     </Block>
+                    </KeyboardAvoidingView>
                 </Modal>
 
                

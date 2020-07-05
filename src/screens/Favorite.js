@@ -52,7 +52,7 @@ class Favorite extends Component {
         
         return (
             <Block flex={1}>
-                <Header  nameTab={"My Favorite"} />
+                <Header  nameTab={"Yêu thích"} />
             <Block   padding={[10,10,0, 10]}  >
                 <SwipeListView
                     data={this.props.favorites}

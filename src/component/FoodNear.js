@@ -44,7 +44,7 @@ export default class FoodNear extends Component {
         return (
             <Block  flex={1}  margin={[10,15,0,0]}     >
                 <Block   row  space={'between'} >
-                    <Text h2 bold >Gần đây </Text>
+                    <Text h2 bold orange >Gần đây </Text>
                     <View  style={boxShowAll}>
                         <Text>Show all</Text>
                          <TouchableOpacity 

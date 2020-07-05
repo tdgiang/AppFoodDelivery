@@ -111,7 +111,7 @@ class Order extends Component {
         const {boxTotal,containerOrder,btnTotal}=styles
         return (
             <Block    >
-                <Header nameTab={"My Order"} />
+                <Header nameTab={"Giỏ hàng"} />
                 <Block  flex={3}  padding={[10,10]}>
                     <View  style={containerOrder}>
                         <SwipeListView

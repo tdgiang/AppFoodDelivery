@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { View,TextInput,KeyboardAvoidingView, Alert  } from 'react-native';
+import { View,
+    TextInput,
+    KeyboardAvoidingView,
+     Alert  ,
+     TouchableWithoutFeedback,
+     Keyboard
+} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import styles from '../style/styles';
 
@@ -22,6 +28,7 @@ export default   class SignUp extends Component {
         const  {btn,txtInput}=styles;
         const {userName,pass,confirmPass,name,phone,address}=this.state
         return (
+            <TouchableWithoutFeedback  onPress={()=>Keyboard.dismiss()} >
              <Block  flex={1} padding={[0,30]} color={'white'}  >
                  <View style={{flex:4}}  >
                         <KeyboardAvoidingView
@@ -98,7 +105,7 @@ export default   class SignUp extends Component {
                 
              </Block>
           
-            
+        </TouchableWithoutFeedback>   
         );
     }
 }

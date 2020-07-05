@@ -13,7 +13,7 @@ class CollectionFood extends Component {
             return (
                 <Block  flex={1}   margin={[10,0]}    >
                     <Block  row  space={'between'} >
-                    <Text h2  bold >Danh sách </Text>
+                    <Text h2 orange  bold >Danh sách </Text>
                     <View style={[boxShowAll,{marginRight:15}]} >
                         <Text>Show all</Text>
                          <TouchableOpacity

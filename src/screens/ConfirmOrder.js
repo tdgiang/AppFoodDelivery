@@ -47,9 +47,7 @@ var orange="#FF8C00"
                         nextBtnText={"Tiếp theo"}
                         nextBtnTextStyle={stepBtn} 
                         onNext={()=>
-                            //this.props.addAddressInBill(this.props.user)
-                            console.log(this.props.user)
-                        
+                            this.props.addAddressInBill(this.props.user)
                         }
                     >
                         <AddressOrder nextStep={this.addNewAddressCompleted.bind(this)} />

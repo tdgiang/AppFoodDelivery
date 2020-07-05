@@ -39,9 +39,9 @@ function MyTabs( navigationStack) {
         name="Order" 
         component={OrderStack} 
         options={{
-            tabBarLabel: 'Order',
+            tabBarLabel: 'Cart',
             tabBarIcon: ({ color, size }) => (
-              <Icon name="list-alt" color={color} size={size} />
+              <Icon name="shopping-cart" color={color} size={size} />
             ),
           }}
       
