@@ -130,7 +130,7 @@ class Order extends Component {
 
                 </Block>
                 <Block  flex={1}   padding={[0,20]} color={'white'} >
-                    <Block  padding={[10,0]} style={boxTotal} >
+                    <Block  padding={[5,0]} style={boxTotal} >
                         <Block row   space={'between'} >
                             <Text title >Tổng tiền đồ ăn:</Text>
                             <Text title >{this.totalFood()}</Text>

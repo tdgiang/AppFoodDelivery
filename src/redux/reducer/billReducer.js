@@ -18,7 +18,8 @@ const billReducer=(bill={},action)=>{
                 return{
                     ...bill,
                     status:3,
-                    idServer:action.idBill
+                    idServer:action.idBill,
+                    create:Date.now()
                 }
         case "SEND_BILL_FAILED":
                 return{

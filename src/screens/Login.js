@@ -34,35 +34,46 @@ const data=[
     {
         id:'3',
         img:require('../constants/images/login04.jpg'),
+    },
+    {
+        id:'4',
+        img:require('../constants/images/login1.jpg'),
     }
 ];
 
  class Login extends Component {
     constructor(props){
         super(props);
+        this.viewabilityConfig = {
+            minimumViewTime:100,
+            waitForInteraction: true,
+            viewAreaCoveragePercentThreshold: 95
+        }
+        this.myRef = React.createRef();
         this.state={
-            scrollX : new Animated.Value(0),
+            index : 0,
             userName:"",
             pass:""
         }
-     
     }
-    infiniteScroll(dataList){
-        const numberOfData = dataList.length
-        let scrollValue = 0, scrolled = 0
-        setInterval(function() {
-            scrolled ++
-            if(scrolled < numberOfData)
-                scrollValue = scrollValue + width
-    
-            else{
-                scrollValue = 0
-                scrolled = 0
-            }
 
-        }, 3000)
+    componentDidMount(){
+        this.startAutoSlide()
     }
-    
+    startAutoSlide(){
+        setInterval(()=>this.changeIndex(),3000)
+    }
+    changeIndex=()=>{
+        this.setState({
+            index:(this.state.index+1)%4
+        },()=>{
+           this.myRef.current.scrollToIndex({
+                index:this.state.index,
+                animated: true,
+              }
+           )
+        })
+    }
     renderViewDot=()=>(
         <LinearGradient 
                 start={{x: 0, y: 0}} end={{x: 0, y: 1}}
@@ -70,16 +81,11 @@ const data=[
                 style={{flex:1}}
         >  
                 <Block flex={1} row center middle >
-                    {data.map((val,index)=>{
-                        let position = Animated.divide(this.state.scrollX, width)
-                        let opacity = position.interpolate({
-                            inputRange: [index - 1, index, index + 1],
-                            outputRange: [0.3, 1, 0.3],
-                            extrapolate: 'clamp'
-                        })
+                    {data.map((val,i)=>{
+                         let opacity=(i==this.state.index?1:0.3);
                         return (
                             <Animated.View
-                                key={index}
+                                key={i}
                                 style={{ opacity, height: 10, width: 10, backgroundColor: 'white', margin: 8, borderRadius: 5 }}
                             />
                         )
@@ -111,17 +117,15 @@ const data=[
         const {body,txtInput,btn,slideLogin}=styles;
         const {userName,pass}=this.state;
         return (
-            // <KeyboardAvoidingView 
-            //     style={{flex:1}} 
-            //     behavior={'height'}
-            // >
+        
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <Block flex={1} >
                         <View  style={slideLogin}  >
                             <FlatList
-                                ref={"flatList"}
+                               ref={this.myRef}
                                 data={data}
                                 style={{zIndex:0}}
+                                viewabilityConfig={this.viewabilityConfig}
                                 horizontal
                                 pagingEnabled
                                 scrollEnabled
@@ -131,10 +135,6 @@ const data=[
                                 scrollEventThrottle={16}
                                 showsHorizontalScrollIndicator={false}
                                 renderItem={({item})=>this.renderItem(item)}
-                                onScroll={({nativeEvent})=> this.setState({
-                                    scrollX:nativeEvent.contentOffset.x
-                                })
-                                }
                             />  
                             <View  style={{height:50,position:'absolute',bottom:10,width}} >
                                 {this.renderViewDot()}
@@ -203,9 +203,6 @@ const data=[
                         </Block>
                     </Block>
                 </TouchableWithoutFeedback>
-            // </KeyboardAvoidingView>
-            
-            
         );
     }
 }

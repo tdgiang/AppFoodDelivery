@@ -435,6 +435,10 @@ const styles=StyleSheet.create({
         backgroundColor:colors.white,
         marginVertical:10
     },
+    boxHistory:{
+        elevation:4,
+        borderRadius:sizes.small
+    }
    
   
 

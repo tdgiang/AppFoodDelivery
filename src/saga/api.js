@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-community/async-storage';
-
 //Foods;
 const urlGetFood="http://192.168.0.106:3000/apifoods";
 const urlSignUp="http://192.168.0.106:3000/apiusers";
@@ -15,13 +14,10 @@ function* getFoodsFromAPI(){
         return resJson
     })
     .catch(err=>{
-        console.log(err);
         return [];
     })
     return response;
 }
-
-
 
 //Favorites
 function* getFavorite(){
@@ -70,7 +66,6 @@ function* storageOrder(arrOrder){
 //User
 export async function  signUpFromAPI(data){
     try {
-        console.log(data);
         const  response=await fetch(urlSignUp, {
             method: 'POST',
             headers: {
@@ -128,7 +123,6 @@ function* editProfileFromAPI(newData){
         .then(resJson=>{
             if(resJson.user)
             {
-                console.log("Edit success API");
                 return true;
 
             }
@@ -137,7 +131,6 @@ function* editProfileFromAPI(newData){
                 return false;
         })
         .catch(err=>{
-            console.log(err);
             return false;
         })
 }
@@ -151,7 +144,6 @@ function* getCollectionsFromAPI(){
         return resJson
     })
     .catch(err=>{
-        console.log(err);
         return [];
     })
     return collections;
@@ -159,7 +151,6 @@ function* getCollectionsFromAPI(){
 
 //Bill
 function*  sendBill(data){
-        console.log("Send bill API");
         
        let result=yield fetch(urlSendBill, {
             method: 'POST',
@@ -181,7 +172,6 @@ function*  sendBill(data){
           })
           .then(res=>res.json())
           .then(resJson=>{
-              console.log(resJson);
               if(resJson.data._id)
                 return resJson.data._id;
               else
@@ -223,7 +213,7 @@ export async function  completedBill(data){
 //history
 function* getHistory(){
     try {
-        const jsonValue = yield AsyncStorage.getItem('@arrHistory1')
+        const jsonValue = yield AsyncStorage.getItem('@arrHistory2')
         return jsonValue != null ? JSON.parse(jsonValue) : null;
       } catch(e) {
             return [];
@@ -232,9 +222,8 @@ function* getHistory(){
 
 function* storageHistory(arrHistory){
     try {
-        console.log("This is history api");
         const jsonValue = JSON.stringify(arrHistory);
-        yield AsyncStorage.setItem('@arrHistory1', jsonValue);
+        yield AsyncStorage.setItem('@arrHistory2', jsonValue);
         return true;
       } catch (e) {
         return false;

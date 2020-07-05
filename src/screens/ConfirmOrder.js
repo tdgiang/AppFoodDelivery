@@ -19,8 +19,15 @@ var orange="#FF8C00"
         super(props);
         this.state={
             isCartChecked:false,
+            stepActive:0
         }
         
+    }
+
+    addNewAddressCompleted(){
+        this.setState({
+            stepActive:1
+        })
     }
      
     render() {
@@ -33,14 +40,19 @@ var orange="#FF8C00"
                     completedStepIconColor={orange}
                     activeLabelColor={orange}
                     removeBtnRow={true}
+                    activeStep={this.state.stepActive}
                 >
                     <ProgressStep 
                         label="Địa chỉ" 
                         nextBtnText={"Tiếp theo"}
                         nextBtnTextStyle={stepBtn} 
-                        onNext={()=>this.props.addAddressInBill(this.props.user)}
+                        onNext={()=>
+                            //this.props.addAddressInBill(this.props.user)
+                            console.log(this.props.user)
+                        
+                        }
                     >
-                        <AddressOrder  />
+                        <AddressOrder nextStep={this.addNewAddressCompleted.bind(this)} />
                     </ProgressStep>
                     <ProgressStep 
                         label="Thanh toán" 

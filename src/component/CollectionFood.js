@@ -8,12 +8,8 @@ import { connect } from 'react-redux';
 import assets from '../constants/data/assects';
 
 class CollectionFood extends Component {
-    
-     
      render() {
             const  {imgCollectionHome,btnIcon,boxShowAll}=styles;
-          
-            
             return (
                 <Block  flex={1}   margin={[10,0]}    >
                     <Block  row  space={'between'} >
@@ -36,12 +32,11 @@ class CollectionFood extends Component {
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         style={{marginVertical:10}}
-                
                     >
                         {this.props.collections.map(e=>(
                             <TouchableOpacity
                             key={e._id}
-                            onPress={()=> this.props.navigation.navigate("CollectionDetail")}
+                            onPress={()=> this.props.navigation.navigate("CollectionDetail",{listFoods:e.children,id:e._id})}
                             style={{marginRight:15}}
                         >
                             <Image

@@ -18,18 +18,18 @@ class Welcome extends Component {
             loading:true
         }
     }
-    UNSAFE_componentWillMount(){
+    componentDidMount(){
         this.props.fetchCollections();
         this.props.fetchFoods();
         this.props.getFavorite();
         this.props.getHistory();
         this.props.getOrders();
-        setTimeout(()=>this.setState({loading:false}),2000)
+        setTimeout(()=>this.setState({loading:false}),3000)
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
         const {loading}=this.state;
-        console.log(this.props.history);
+    
         
         return (
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>

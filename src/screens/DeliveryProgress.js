@@ -67,7 +67,7 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
   constructor () {
     super()
     this.state = {
-      currentPage: 1
+      currentPage: 3
     }
   }
   renderLabel = ({ position, stepStatus, label, currentPosition }) => {
@@ -147,7 +147,6 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
   render () {
     const {footerDelivery,boxDelivery,btnTotal,hr1,borderDashed,bodyDelivery}=styles;
     
-    console.log(this.props.bill);
     const {dataOrder,payMethod}=this.props.bill
     return (
       <Block flex={1}>

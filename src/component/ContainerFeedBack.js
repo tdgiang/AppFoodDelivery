@@ -6,7 +6,6 @@ import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
 
-
 export default class ContainerFeedBack extends Component {
      render() {
         const {boxIconProfile}=styles;
