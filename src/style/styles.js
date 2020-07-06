@@ -247,7 +247,7 @@ const styles=StyleSheet.create({
 
     },
     boxSlide:{
-        height:height/3,
+        height:height/3-20,
         width:width
 
     },

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View,Image,StyleSheet,ImageBackground,ActivityIndicator,Dimensions  } from 'react-native';
+import { View,
+    Image,
+    StyleSheet,
+    ImageBackground,
+    ActivityIndicator,
+    Dimensions ,
+    Animated
+} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -8,6 +15,7 @@ import {fetchFoods,getFavorite,getOrders} from '../redux/actionCreators';
 import {getHistory} from '../redux/action/actionHistory';
 import {fetchCollections}  from '../redux/action/actionCollections';
 import {connect}  from 'react-redux';
+import { Easing } from 'react-native-reanimated';
 const bgWelcome=require('../constants/images/bgWelcome1.jpg')
 const {width,height}=Dimensions.get('window');
 
@@ -15,7 +23,8 @@ class Welcome extends Component {
     constructor(props){
         super(props);
         this.state={
-            loading:true
+            loading:true,
+            aniLocation:new Animated.Value(-400)
         }
     }
     componentDidMount(){
@@ -24,7 +33,21 @@ class Welcome extends Component {
         this.props.getFavorite();
         this.props.getHistory();
         this.props.getOrders();
-        setTimeout(()=>this.setState({loading:false}),3000)
+        setTimeout(()=>{
+            this.setState({loading:false})
+            Animated.spring(
+                this.state.aniLocation,
+                {
+                    toValue:0,
+                    tension:50,
+                    friction:10,
+                    useNativeDriver:false
+                },
+                
+            ).start();
+        }
+        ,2000)
+
     }
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
@@ -63,13 +86,29 @@ class Welcome extends Component {
                         <Text  style={txtTitle}>FAST FOOD</Text>
                         <Text   style={txtTitle} >TO YOUR</Text>
                         <Text  style={txtTitle} >DOOR</Text>
-                        <Block  margin={[20,0]} >
-                            <View>
-                                <Text h3  white  >Giao hàng cực nhanh </Text>
-                            </View>
-                            <View>
-                                <Text h3  white  >Như cách người yêu cũ trở mặt :3</Text>
-                            </View>
+                        <Block  margin={[40,0]} row >
+                            <Animated.View
+                                style={{
+                                    left:this.state.aniLocation
+                                }}
+                            >
+                                
+                                    <Text h3  white  >Giao hàng cực nhanh </Text>
+                                    <Text h3  white  >Như cách người yêu cũ trở mặt :3</Text>
+                            </Animated.View>
+                            <Animated.View
+                                style={{
+                                    left:this.state.aniLocation,
+                                    marginLeft:10,
+
+                                }}
+                            >
+                                    <Image  
+                                        source={require('../constants/images/motorcycle.png')}
+                                        style={{width:50,height:50}}
+                                    />
+
+                            </Animated.View>
                         </Block>
                     </Block>
                    

@@ -18,6 +18,7 @@ export default class CollectionDetail extends Component {
                 <ImageBackground
                     style={boxSlide}
                     source={assects[id]}
+                    resizeMode={'cover'}
                 >
                     <TouchableOpacity
                         onPress={()=> this.props.navigation.pop()}

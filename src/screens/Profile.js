@@ -54,7 +54,7 @@ class Profile extends Component {
         const {txtName,iconName,id}=item
         return (
             <TouchableOpacity key={id} 
-                onPress={()=>this.props.navigation.navigate(id)
+                onPress={()=>this.props.navigation.navigate("History")
                 }
             >
                 <View  style={[rowBetween,{paddingVertical:5}]}     >
