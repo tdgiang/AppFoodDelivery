@@ -83,7 +83,7 @@ class Welcome extends Component {
                         
                    
                         <Text  style={txtTitle}  >DELIVERED</Text>
-                        <Text  style={txtTitle}>FAST FOOD</Text>
+                        <Text  style={txtTitle}  >FAST FOOD</Text>
                         <Text   style={txtTitle} >TO YOUR</Text>
                         <Text  style={txtTitle} >DOOR</Text>
                         <Block  margin={[40,0]} row >
