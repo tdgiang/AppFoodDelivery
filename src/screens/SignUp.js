@@ -89,7 +89,7 @@ export default   class SignUp extends Component {
                                         else
                                             Alert.alert("Thông báo!","Mật khẩu không trùng nhau!");
                                     }else
-                                        Alert.alert("Thông báo","Bạn chưa nhập đầy đủ thông tin");
+                                        Alert.alert("Thông báo","Thông tin nhập vào chưa đầy đủ!");
                                 }}
                             >
                                 <Text  h3 white align={'center'} >Sign up</Text>

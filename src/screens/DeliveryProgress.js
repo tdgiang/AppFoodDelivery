@@ -243,7 +243,9 @@ const getStepIndicatorIconConfig = ({ position, stepStatus }) => {
                       <Text white  >Chat</Text>
                   </Block>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flex:1}} >
+                <TouchableOpacity style={{flex:1}}
+                  onPress={()=>Alert.alert("Thông báo!","Bạn có chắc chắn muốn hủy đơn hàng!")}
+                >
                   <Block center middle style={boxDelivery}  > 
                       <Icon
                           name={'window-close'}

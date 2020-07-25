@@ -141,6 +141,7 @@ class AddressOrder extends Component {
                                     address:txtHouse+","+txtPhuong+","+txtQuan+","+txtCity
                                 })
                                 this.props.nextStep();
+                                //alert("Bạn chưa nhập đầy đủ thông tin!");
                             } }>
                             <Text white h2 >Hoàn Thành</Text>
                         </Button>
