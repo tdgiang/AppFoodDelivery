@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { View,TextInput,Image,ScrollView,TouchableOpacity,FlatList} from 'react-native';
 import {Block,Button,Text} from '../component/index';
-import DataFood from '../constants/data/DataFood';
 import styles from '../style/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
-export default class Search extends Component {
+import {connect}  from 'react-redux';
+class Search extends Component {
     constructor(props){
         super(props);
         this.state={
-            data:DataFood,
+            data:this.props.foods,
             txtSearch:""
         }
     }
@@ -41,7 +41,7 @@ export default class Search extends Component {
                         
                     >
                         <Image
-                            source={item.img}
+                            source={{uri:item.images[0]}}
                             style={imgFoodNear}
                             resizeMode={'cover'}
                             />
@@ -107,7 +107,7 @@ export default class Search extends Component {
                             autoFocus
                             onChangeText={(val)=>{
                                 this.setState({
-                                    data:DataFood.filter(e=>e.name.toLowerCase().includes(val)==true)
+                                    data:this.props.foods.filter(e=>e.name.toLowerCase().includes(val)==true)
                                 })
                             }}
                             style={{
@@ -131,3 +131,13 @@ export default class Search extends Component {
         );
     }
 }
+
+
+const mapStateToProps=(state)=>{
+    return {
+      foods:state.foods
+     
+    }
+  }
+  
+export default  connect(mapStateToProps)(Search);

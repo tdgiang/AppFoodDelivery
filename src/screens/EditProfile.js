@@ -10,29 +10,51 @@ import { View,
 import {Block,Button,Text} from '../component/index';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../constants/theme';
-const  img=require('../constants/images/avatar.jpg');
+const  image=require('../constants/images/avatar.jpg');
 import styles from '../style/styles';
 import {editProfile}  from '../redux/action/actionUser';
 import {connect}  from 'react-redux';
+import ImagePicker from 'react-native-image-picker';
 const {width,height}=Dimensions.get('window');
 class EditProfile extends Component {
-
     constructor(props){
         super(props);
        const {name,phone,dateOfBirth,gender,img,address,userName}=this.props.route.params.user;
-       
         this.state={
             name:name,
             phone:phone,
             gender:gender,
             dateOfBirth:dateOfBirth,
-            address:address?address:""
+            address:address?address:"",
+            img:image
         }
     }
-     
+ 
+    _pickImages(){
+        ImagePicker.showImagePicker( (response) => {
+            if (response.didCancel) {
+              console.log('User cancelled image picker');
+            } else if (response.error) {
+              console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+              console.log('User tapped custom button: ', response.customButton);
+            } else {
+              const source = { uri: response.uri };
+              // You can also display the image using data:
+              // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+              
+          
+              this.setState({
+                img: source,
+              });
+               
+            }
+          });
+    } 
+
     render() {
       const  {containerProfile,txtInputProfile,boxAvatar,imgAvatar,boxIconPhoto}=styles;
-        const {name,address,phone,gender,dateOfBirth}=this.state;
+        const {name,address,phone,gender,dateOfBirth,img}=this.state;
         const {userName}=this.props.route.params.user;
       return (
         <TouchableWithoutFeedback  onPress={()=>Keyboard.dismiss()}>
@@ -42,12 +64,11 @@ class EditProfile extends Component {
                         <View  style={boxAvatar} >
                                 <Image
                                     style={imgAvatar}
-                                    
                                     source={img}
-                                
                                 />
                                 <TouchableOpacity
                                     style={boxIconPhoto}
+                                    onPress={this._pickImages.bind(this)}
                                 >
                                     <Icon
                                         name={"photo"}

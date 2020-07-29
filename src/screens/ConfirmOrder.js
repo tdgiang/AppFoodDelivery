@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {TextInput, View,Keyboard} from 'react-native';
+import {TextInput, View,Keyboard,Dimensions} from 'react-native';
 import {Block,Button,Text} from '../component/index';
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import styles from '../style/styles';
@@ -10,16 +10,18 @@ import CheckBox from 'react-native-check-box'
 import {connect}  from 'react-redux';
 import {addAddressInBill,addPayMethodInBill}  from '../redux/action/actionBill';
 import {sendBill}  from '../redux/action/actionBill';
-
-
-var orange="#FF8C00"
+import PayCart from '../component/PayCart';
+import Modal from 'react-native-modal';
+var orange="#FF8C00";
+var {width,height}=Dimensions.get('window');
 
  class ConfirmOrder extends Component {
     constructor(props){
         super(props);
         this.state={
             isCartChecked:false,
-            stepActive:0
+            stepActive:0,
+            toggleModal:false
         }
         
     }
@@ -29,9 +31,16 @@ var orange="#FF8C00"
             stepActive:1
         })
     }
+
+    closeModal(){
+        this.setState({
+            toggleModal:false
+        })
+    }
      
     render() {
         const {stepBtn,hr1}=styles;
+        const {isCartChecked,toggleModal}=this.state;
         return (
             <Block  color={'white'}>
                 <ProgressSteps
@@ -77,13 +86,38 @@ var orange="#FF8C00"
                                     style={{flex: 1, padding: 10}}
                                     onClick={()=>{
                                       this.setState({
-                                        isCartChecked:!this.state.isCartChecked,
+                                        isCartChecked:!isCartChecked,
+                                        toggleModal:true
                                       })
                                     }}
-                                    isChecked={this.state.isCartChecked}
+                                    isChecked={isCartChecked}
                                     leftText={"Thẻ tín dụng"}
                                     leftTextStyle={{fontSize:16}}
                                 />
+                                <Modal
+                                    visible={toggleModal}
+                                    backdropColor="#B4B3DB"
+                                    backdropOpacity={0.6}
+                                    animationIn="zoomInDown"
+                                    animationOut="zoomOutUp"
+                                    animationInTiming={800}
+                                    animationOutTiming={600}
+                                >
+                                    <View
+                                        style={{
+                                            width:width-40,
+                                            height:height-160,
+                                            borderRadius:6,
+                                            backgroundColor:'white',
+                                            borderWidth:1,
+                                            elevation:3,
+                                            borderColor:"#B4B3DB"
+                                        }}
+                                    >
+                                        <PayCart closeModal={this.closeModal.bind(this)} />
+
+                                    </View>
+                                </Modal>
                             </Block>
                             <View style={hr1}/>
                             <Block  padding={[10,20]} row  center >
@@ -97,10 +131,10 @@ var orange="#FF8C00"
                                     style={{flex: 1, padding: 10}}
                                     onClick={()=>{
                                       this.setState({
-                                        isCartChecked:!this.state.isCartChecked
+                                        isCartChecked:!isCartChecked
                                       })
                                     }}
-                                    isChecked={!this.state.isCartChecked}
+                                    isChecked={!isCartChecked}
                                     leftText={"Thanh toán khi nhận hàng"}
                                     leftTextStyle={{fontSize:16}}
                                 />

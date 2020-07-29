@@ -1,12 +1,12 @@
 import AsyncStorage from '@react-native-community/async-storage';
 //Foods;
-const urlGetFood="http://192.168.0.106:3000/apifoods";
-const urlSignUp="http://192.168.0.106:3000/apiusers";
-const urlLogin="http://192.168.0.106:3000/apiusers/login";
-const urlEditProfile="http://192.168.0.106:3000/apiusers/edit";
-const urlGetCollections="http://192.168.0.106:3000/apicollections/foods";
-const urlSendBill="http://192.168.0.106:3000/apibills";
-const urlCompletedBill="http://192.168.0.106:3000/apibills";
+const urlGetFood="https://food-fast-app.herokuapp.com/apifoods";
+const urlSignUp="https://food-fast-app.herokuapp.com/apiusers";
+const urlLogin="https://food-fast-app.herokuapp.com/apiusers/login";
+const urlEditProfile="https://food-fast-app.herokuapp.com/apiusers/edit";
+const urlGetCollections="https://food-fast-app.herokuapp.com/apicollections/foods";
+const urlSendBill="https://food-fast-app.herokuapp.com/apibills";
+const urlCompletedBill="https://food-fast-app.herokuapp.com/apibills";
 function* getFoodsFromAPI(){
     const response=yield fetch(urlGetFood)
     .then(res=>res.json())

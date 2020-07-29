@@ -3,9 +3,7 @@ import {api}  from './api';
 
 function* sendBill(action){
     try {
-        console.log("Hello send bill saga");
         let result=yield api.sendBill(action.bill);
-        console.log(result);
         if(result)
             yield put({type:"SEND_BILL_SUCCEEDED",idBill:result});
         else

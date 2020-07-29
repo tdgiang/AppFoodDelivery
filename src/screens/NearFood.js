@@ -5,21 +5,39 @@ import MapView,{Marker,Circle} from 'react-native-maps';
 import {colors}  from '../constants/theme';
 import DataFoodNear from '../constants/data/DataFoodNear';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Geolocation from '@react-native-community/geolocation';
 const {width,height}=Dimensions.get('window');
 import {connect}  from 'react-redux';
 import {addFavorite,addOrder} from '../redux/actionCreators';
-const LatLng={
-    latitude: 21.004229,
-    longitude:105.9354013,
-  }
+
+
+ 
 import styles from '../style/styles';
 class NearFood extends Component {
     constructor(props){
         super(props);
         this.state={
-            foodShow:0
+            foodShow:0,
+            location:{
+                latitude:21.004229,
+                longitude: 105.9354013
+            }
         }
     }
+
+    UNSAFE_componentWillMount(){
+        Geolocation.getCurrentPosition(info => {
+             
+            this.setState({
+                location:{
+                    latitude:info.coords.latitude,
+                    longitude:info.coords.longitude
+                }
+            })
+        });
+    }
+
+
     renderStar(rating){
             let arrStar=[]
             for(let i=0;i<parseInt(rating);i++){
@@ -65,7 +83,7 @@ class NearFood extends Component {
                                 >
                                     <Icon
                                         name={'bookmark'}
-                                        size={25}
+                                        size={22}
                                         color={colors.orange}
                                         style={{marginRight:20}}
 
@@ -87,7 +105,7 @@ class NearFood extends Component {
                                 >
                                     <Icon
                                         name={'shopping-cart'}
-                                        size={25}
+                                        size={22}
                                         color={colors.orange}
                                     />
                                 </TouchableOpacity>
@@ -125,17 +143,17 @@ class NearFood extends Component {
                     <MapView
                         style={{flex:1}}
                         initialRegion={{
-                        latitude: 21.004229,
-                        longitude: 105.9354013,
-                        latitudeDelta: 0.0492,
-                        longitudeDelta: 0.0121,
+                        latitude: this.state.location.latitude,
+                        longitude: this.state.location.longitude,
+                        latitudeDelta: 0.0562,
+                        longitudeDelta: 0.0921,
                         
                         }}
                     >
                         <Marker
                         title={"My home"}
-                        coordinate={LatLng}
-                        style={{width:20,height:20}}
+                        coordinate={this.state.location}
+                        style={{width:10,height:10}}
                         icon={require('../constants/images/icons/circle.png')}
                         />
                         <Marker
@@ -145,9 +163,9 @@ class NearFood extends Component {
                         />
 
                         <Circle 
-                            center={LatLng}
+                            center={this.state.location}
                             radius={2000}
-                            strokeWidth={2}
+                            strokeWidth={1}
                             strokeColor={colors.lightBlue1}
                         />
                     </MapView>

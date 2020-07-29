@@ -34,7 +34,6 @@ export function* watchAddOrder(){
 }
 function* deleteOrder(action){
     try {
-        console.log("This is deleteORder saga");
         
         let arrOrder=yield api.getOrder();
         let newOrder=yield arrOrder.filter(e=>e._id!=action.idFood)

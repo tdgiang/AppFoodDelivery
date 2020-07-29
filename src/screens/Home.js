@@ -43,7 +43,7 @@ class Home extends Component {
                   </Button>
                 </Block>
                 <FoodPopular popularFoods={popularFoods} navigation={this.props.navigation}   />
-                <FoodNear  nearFoods={nearFood.slice(0,3)} navigation={this.props.navigation}    />
+                <FoodNear  nearFoods={nearFood.slice(0,4)} navigation={this.props.navigation}    />
                 <CollectionFood navigation={this.props.navigation}  />
              </ScrollView>
             

@@ -52,7 +52,7 @@ class Welcome extends Component {
     render() {
         const  { bgStyle,txtTitle,btn,linearGradient}=styles;
         const {loading}=this.state;
-    
+        //console.log(this.props.getOrders());
         
         return (
                 <ImageBackground  resizeMode={'cover'} source={bgWelcome}  style={bgStyle}>
